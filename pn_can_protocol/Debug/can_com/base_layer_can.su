@@ -1,0 +1,6 @@
+../can_com/base_layer_can.c:18:13:debug	32	static
+../can_com/base_layer_can.c:29:6:base_layer_can_init	24	static
+../can_com/base_layer_can.c:57:9:base_layer_can_send	32	static
+../can_com/base_layer_can.c:111:9:base_layer_can_receive	32	static
+../can_com/base_layer_can.c:160:6:base_layer_can_send_monitor	16	static
+../can_com/base_layer_can.c:184:6:base_layer_can_receive_monitor	16	static

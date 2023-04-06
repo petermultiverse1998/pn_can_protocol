@@ -1,0 +1,6 @@
+syn_layer_can_test.c:11:16:can_send	2
+syn_layer_can_test.c:19:17:getTimeInMillis	1
+syn_layer_can_test.c:24:13:dataTransmitted	3
+syn_layer_can_test.c:36:13:dataReceived	3
+syn_layer_can_test.c:55:13:can_receive	5
+syn_layer_can_test.c:70:6:sync_layer_can_test	1

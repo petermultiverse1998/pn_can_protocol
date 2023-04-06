@@ -1,0 +1,6 @@
+sync_layer_can_tx.c:11:17:timeInMillis	2
+sync_layer_can_tx.c:18:13:dataTransmitted	2
+sync_layer_can_tx.c:29:6:sync_layer_can_tx_init	1
+sync_layer_can_tx.c:37:6:sync_layer_can_tx_send	2
+sync_layer_can_tx.c:58:10:sync_layer_can_tx_recDataId	4
+sync_layer_can_tx.c:75:6:sync_layer_can_tx_rec	15
