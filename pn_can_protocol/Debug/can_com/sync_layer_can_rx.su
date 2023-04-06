@@ -1,0 +1,5 @@
+../can_com/sync_layer_can_rx.c:12:17:timeInMillis	8	static
+../can_com/sync_layer_can_rx.c:19:13:dataReceived	24	static
+../can_com/sync_layer_can_rx.c:30:6:sync_layer_can_rx_init	24	static
+../can_com/sync_layer_can_rx.c:46:10:sync_layer_can_rx_recDataId	24	static
+../can_com/sync_layer_can_rx.c:62:6:sync_layer_can_rx_rec	72	static

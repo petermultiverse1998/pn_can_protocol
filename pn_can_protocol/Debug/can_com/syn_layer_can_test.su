@@ -1,0 +1,6 @@
+../can_com/syn_layer_can_test.c:11:16:can_send	40	static
+../can_com/syn_layer_can_test.c:19:17:getTimeInMillis	4	static
+../can_com/syn_layer_can_test.c:24:13:dataTransmitted	32	static
+../can_com/syn_layer_can_test.c:36:13:dataReceived	32	static
+../can_com/syn_layer_can_test.c:55:13:can_receive	40	static
+../can_com/syn_layer_can_test.c:70:6:sync_layer_can_test	8	static
