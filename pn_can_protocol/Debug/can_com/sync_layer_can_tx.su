@@ -1,6 +1,0 @@
-../can_com/sync_layer_can_tx.c:11:17:timeInMillis	8	static
-../can_com/sync_layer_can_tx.c:18:13:dataTransmitted	24	static
-../can_com/sync_layer_can_tx.c:29:6:sync_layer_can_tx_init	24	static
-../can_com/sync_layer_can_tx.c:37:6:sync_layer_can_tx_send	32	static
-../can_com/sync_layer_can_tx.c:58:10:sync_layer_can_tx_recDataId	24	static
-../can_com/sync_layer_can_tx.c:75:6:sync_layer_can_tx_rec	64	static
