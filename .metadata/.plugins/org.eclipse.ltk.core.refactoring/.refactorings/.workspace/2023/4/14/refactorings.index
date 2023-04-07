@@ -1,2 +1,7 @@
 1680754794988	Delete resource 'pn_can_protocol/can_com'
 1680755726351	Delete resource 'pn_can_protocol'
+1680763616600	Delete 4 resources
+1680788133505	Delete resource 'pn_can_protocol/user/sync_layer_can_rx.c'
+1680788138072	Delete resource 'pn_can_protocol/user/sync_layer_can_tx.c'
+1680788471490	Delete resource 'pn_can_protocol/can_com/map_handling_layer_rx.c'
+1680788484578	Delete 3 resources
