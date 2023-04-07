@@ -10,6 +10,8 @@
 
 #include "main.h"
 
+void canRxInterrupt();
+
 void init();
 void loop();
 
