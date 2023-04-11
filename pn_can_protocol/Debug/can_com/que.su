@@ -1,8 +1,0 @@
-../can_com/que.c:16:6:que_create	16	static
-../can_com/que.c:36:6:que_push	24	static
-../can_com/que.c:67:9:que_get	16	static
-../can_com/que.c:78:6:que_pop	24	static
-../can_com/que.c:102:6:que_delete	24	static
-../can_com/que.c:117:6:que_print	24	static
-../can_com/que.c:134:5:que_isExist	32	static
-../can_com/que.c:150:5:que_getLeakedBytes	16	static
