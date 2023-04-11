@@ -47,15 +47,15 @@ static CAN_RxHeaderTypeDef rx_header;
 static uint8_t data[8];
 void canRxInterrupt() {
 	HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rx_header, data);
+//	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
+//	for (int i = 0; i < rx_header.DLC; ++i)
+//		printf("%d ", data[i]);
+//	printf("\n");
 	sync_layer_can_txReceiveThread(&links, &sync_data, rx_header.ExtId, data,
 			rx_header.DLC);
 //	sync_layer_can_rxReceiveThread(&links, &sync_data, rx_header.ExtId, data,
 //			rx_header.DLC);
 
-//	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
-//	for (int i = 0; i < rx_header.DLC; ++i)
-//		printf("%d ", data[i]);
-//	printf("\n");
 }
 
 static CAN_TxHeaderTypeDef tx_header;
@@ -67,10 +67,10 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 	tx_header.RTR = CAN_RTR_DATA;
 	tx_header.TransmitGlobalTime = DISABLE;
 
-	printf("canSend-> 0x%02x : ", (unsigned int) id);
-	for (int i = 0; i < len; ++i)
-		printf("%d ", bytes[i]);
-	printf("\n");
+//	printf("canSend-> 0x%02x : ", (unsigned int) id);
+//	for (int i = 0; i < len; ++i)
+//		printf("%d ", bytes[i]);
+//	printf("\n");
 
 	return HAL_CAN_AddTxMessage(&hcan, &tx_header, bytes, &tx_mailbox) == HAL_OK;
 }
@@ -79,10 +79,21 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 static void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
 		uint8_t status) {
 
-	if (status)
-		console("Data transmit", "Success");
-	else
-		console("Data transmit", "Failed");
+//	if (status)
+//		console("Data transmit", "Success");
+//	else
+//		console("Data transmit", "Failed");
+
+	printf("Data : ");
+	if(!status){
+		printf("failed\n");
+		return;
+	}
+	for (int i = 0; i < data->size; i++)
+		printf("%d ", data->bytes[i]);
+	printf("\n");
+	data->id++;
+	data->track = SYNC_LAYER_CAN_START_REQUEST;
 }
 
 static void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
@@ -93,32 +104,29 @@ static void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
 		console("Data receive", "Failed");
 }
 
+uint8_t bytes[] = {1,2,3,4,[9]=10};
 void init() {
 	canInit();
-	console("INIT", "SUCCESS");
+	console("\n\nSOURCE INIT", "SUCCESS");
 	sync_layer_can_init(canSend, txCallback, rxCallback);
 
 	sync_data.id = 0xA;
 	sync_data.count = 0;
-	sync_data.sendAckRetry = 2;
-	sync_data.dataRetry = 2;
+	sync_data.data_retry = 0;
 	sync_data.track = SYNC_LAYER_CAN_START_REQUEST;
-	sync_data.size = 8;
-	sync_data.bytes = (uint8_t*) malloc(8);
+	sync_data.size = 10;
+	sync_data.bytes = bytes;
 
-	sync_data.bytes[0] = 'H';
-	sync_data.bytes[1] = 'e';
-	sync_data.bytes[2] = 'l';
-	sync_data.bytes[3] = 'l';
-	sync_data.bytes[4] = 'o';
-	sync_data.bytes[5] = '!';
-	sync_data.bytes[6] = '!';
-	sync_data.bytes[7] = '!';
+	HAL_Delay(3000);
 }
 
 void loop() {
+//	printf("Data track : %d\n", sync_data.track);
 	sync_layer_can_txSendThread(&links, &sync_data);
 //	sync_layer_can_rxSendThread(&links, &sync_data);
-	HAL_Delay(100);
+
+
+
+//	HAL_Delay(1);
 
 }

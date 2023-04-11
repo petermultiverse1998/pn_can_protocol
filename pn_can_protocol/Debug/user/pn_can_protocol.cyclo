@@ -1,0 +1,4 @@
+pn_can_protocol.c:24:13:console	4
+pn_can_protocol.c:47:6:pn_can_protocol_addLink	4
+pn_can_protocol.c:72:6:pn_can_protocol_send	1
+pn_can_protocol.c:76:6:pn_can_protocol_loop	1

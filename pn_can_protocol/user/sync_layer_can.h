@@ -37,25 +37,24 @@ typedef struct {
 	uint32_t id;
 	uint8_t *bytes;
 	uint16_t size;
-	SyncLayerCanTrack track; // Initially should SYNC_LAYER_CAN_START_REQUEST
+	SyncLayerCanTrack track;// Initially should SYNC_LAYER_CAN_START_REQUEST
 	uint8_t oneShot;        // 1 for one data ack, 0 for each time data ack
 	uint16_t count;         // Initialization not required
 	uint32_t time_elapse;   // Initialization not required
-	uint8_t sendAckRetry;
-	uint8_t dataRetry;
+	uint8_t data_retry;		// Initially should be 0
 } SyncLayerCanData;
 
 //////////////////////////////////TRANSMITTING////////////////////////////
 uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data);
-uint8_t sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
+void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len);
 
 /////////////////////////////////RECEIVING////////////////////////////////
 uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data);
-uint8_t sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
+void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len);
 
