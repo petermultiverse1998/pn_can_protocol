@@ -2903,3 +2903,1645 @@ arm-none-eabi-size   pn_can_protocol.elf
   18984	    148	   1796	  20928	   51c0	pn_can_protocol.elf
 Finished building: default.size.stdout
  
+17:56:28 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18988	    148	   1796	  20932	   51c4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+17:56:47 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  17812	    148	   1796	  19756	   4d2c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+17:58:59 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18988	    148	   1796	  20932	   51c4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+18:04:46 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18992	    148	   1796	  20936	   51c8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+18:05:14 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18992	    148	   1796	  20936	   51c8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+18:05:43 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18992	    148	   1796	  20936	   51c8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+18:06:15 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18992	    148	   1796	  20936	   51c8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+18:07:06 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18988	    148	   1796	  20932	   51c4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+18:11:23 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18908	    148	   1796	  20852	   5174	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+18:21:07 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    148	   1796	  20820	   5154	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+12:59:30 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18880	    148	   1796	  20824	   5158	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+13:05:06 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18888	    148	   1796	  20832	   5160	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+13:11:46 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18976	    148	   1796	  20920	   51b8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+13:12:11 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18976	    148	   1796	  20920	   51b8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+13:12:22 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18976	    148	   1796	  20920	   51b8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+13:18:50 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18976	    148	   1796	  20920	   51b8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+13:27:44 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18884	    148	   1796	  20828	   515c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+13:38:49 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18744	    148	   1796	  20688	   50d0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+13:39:26 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18744	    148	   1796	  20688	   50d0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+13:40:06 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18744	    148	   1796	  20688	   50d0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+13:43:44 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18680	    148	   1796	  20624	   5090	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+13:44:31 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18680	    148	   1796	  20624	   5090	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+13:50:23 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18716	    148	   1796	  20660	   50b4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:02:45 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18716	    148	   1796	  20660	   50b4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:21:14 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18736	    148	   1796	  20680	   50c8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:21:22 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18736	    148	   1796	  20680	   50c8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+14:22:54 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18736	    148	   1796	  20680	   50c8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+14:25:23 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18736	    148	   1796	  20680	   50c8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:30:56 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18804	    148	   1796	  20748	   510c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:07:03 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18804	    148	   1796	  20748	   510c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:07:43 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18804	    148	   1796	  20748	   510c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+15:08:34 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18804	    148	   1796	  20748	   510c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+15:08:59 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18804	    148	   1796	  20748	   510c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+15:09:44 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18804	    148	   1796	  20748	   510c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+15:10:18 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18804	    148	   1796	  20748	   510c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+15:11:30 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18804	    148	   1796	  20748	   510c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+16:45:03 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18848	    148	   1796	  20792	   5138	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+16:45:24 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18848	    148	   1796	  20792	   5138	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+16:45:41 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18848	    148	   1796	  20792	   5138	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+16:45:58 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18848	    148	   1796	  20792	   5138	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+17:10:04 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18852	    148	   1796	  20796	   513c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+17:10:08 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18852	    148	   1796	  20796	   513c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+17:11:56 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18964	    148	   1796	  20908	   51ac	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+17:14:05 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18964	    148	   1796	  20908	   51ac	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+17:14:09 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  18964	    148	   1796	  20908	   51ac	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+17:17:21 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+../user/sync_layer_can.c: In function 'sync_layer_can_txSendThread':
+../user/sync_layer_can.c:203:28: error: 'SYNC_LAYER_CAN_TX_SEND_ACK_RETRY' undeclared (first use in this function); did you mean 'SYNC_LAYER_CAN_TX_SEND_RETRY'?
+  203 |  if (data->sendAckRetry >= SYNC_LAYER_CAN_TX_SEND_ACK_RETRY) {
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            SYNC_LAYER_CAN_TX_SEND_RETRY
+../user/sync_layer_can.c:203:28: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [user/subdir.mk:25: user/sync_layer_can.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+17:20:02 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+../user/sync_layer_can.c: In function 'sync_layer_can_txSendThread':
+../user/sync_layer_can.c:204:28: error: 'SYNC_LAYER_CAN_TX_SEND_ACK_RETRY' undeclared (first use in this function); did you mean 'SYNC_LAYER_CAN_TX_SEND_RETRY'?
+  204 |  if (data->sendAckRetry >= SYNC_LAYER_CAN_TX_SEND_ACK_RETRY) {
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                            SYNC_LAYER_CAN_TX_SEND_RETRY
+../user/sync_layer_can.c:204:28: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [user/subdir.mk:25: user/sync_layer_can.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+10:06:11 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+../user/sync_layer_can.c: In function 'sync_layer_can_txSendThread':
+../user/sync_layer_can.c:74:10: warning: variable 'is_failed' set but not used [-Wunused-but-set-variable]
+   74 |  uint8_t is_failed = 0;
+      |          ^~~~~~~~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19048	    148	   1796	  20992	   5200	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:06:45 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19028	    148	   1796	  20972	   51ec	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:08:37 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19028	    148	   1796	  20972	   51ec	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:12:49 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19028	    148	   1796	  20972	   51ec	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+10:13:54 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+../user/sync_layer_can.c:191:6: error: conflicting types for 'sync_layer_can_txReceiveThread'
+  191 | void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../user/sync_layer_can.c:8:
+../user/sync_layer_can.h:51:9: note: previous declaration of 'sync_layer_can_txReceiveThread' was here
+   51 | uint8_t sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../user/sync_layer_can.c: In function 'sync_layer_can_txReceiveThread':
+../user/sync_layer_can.c:294:10: error: 'is_failed' undeclared (first use in this function)
+  294 |  return !is_failed;
+      |          ^~~~~~~~~
+../user/sync_layer_can.c:294:10: note: each undeclared identifier is reported only once for each function it appears in
+../user/sync_layer_can.c:294:9: warning: 'return' with a value, in function returning void [-Wreturn-type]
+  294 |  return !is_failed;
+      |         ^
+../user/sync_layer_can.c:191:6: note: declared here
+  191 | void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [user/subdir.mk:25: user/sync_layer_can.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+10:14:04 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+../user/sync_layer_can.c:191:6: error: conflicting types for 'sync_layer_can_txReceiveThread'
+  191 | void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
+      |      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../user/sync_layer_can.c:8:
+../user/sync_layer_can.h:51:9: note: previous declaration of 'sync_layer_can_txReceiveThread' was here
+   51 | uint8_t sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [user/subdir.mk:25: user/sync_layer_can.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+10:14:13 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19000	    148	   1796	  20944	   51d0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:14:55 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-size   pn_can_protocol.elf 
+   text	   data	    bss	    dec	    hex	filename
+  19000	    148	   1796	  20944	   51d0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+10:18:10 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19000	    148	   1796	  20944	   51d0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:20:09 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19000	    148	   1796	  20944	   51d0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:22:41 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19292	    148	   1796	  21236	   52f4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:24:08 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19008	    148	   1796	  20952	   51d8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:36:26 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19008	    148	   1796	  20952	   51d8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:37:23 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19012	    148	   1796	  20956	   51dc	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:40:00 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19012	    148	   1796	  20956	   51dc	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:40:15 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19012	    148	   1796	  20956	   51dc	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:56:02 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19040	    148	   1796	  20984	   51f8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+10:57:16 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  19012	    148	   1796	  20956	   51dc	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:03:15 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+../user/sync_layer_can.c: In function 'sync_layer_can_txSendThread':
+../user/sync_layer_can.c:100:7: error: 'SyncLayerCanData' has no member named 'sendAckRetry'
+  100 |   data->sendAckRetry = 0;
+      |       ^~
+../user/user.c: In function 'init':
+../user/user.c:109:11: error: 'SyncLayerCanData' has no member named 'sendAckRetry'
+  109 |  sync_data.sendAckRetry = 2;
+      |           ^
+make: *** [user/subdir.mk:25: user/sync_layer_can.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [user/subdir.mk:25: user/user.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+11:03:30 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+../user/user.c: In function 'init':
+../user/user.c:109:11: error: 'SyncLayerCanData' has no member named 'sendAckRetry'
+  109 |  sync_data.sendAckRetry = 2;
+      |           ^
+make: *** [user/subdir.mk:25: user/user.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+11:03:41 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18972	    148	   1796	  20916	   51b4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:04:19 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18972	    148	   1796	  20916	   51b4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:04:26 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18972	    148	   1796	  20916	   51b4	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:07:26 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18856	    248	   1800	  20904	   51a8	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:11:05 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18844	    248	   1800	  20892	   519c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:12:52 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18848	    248	   1800	  20896	   51a0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:14:16 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18864	    248	   1800	  20912	   51b0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:17:34 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18696	    248	   1800	  20744	   5108	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:19:12 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18696	    248	   1800	  20744	   5108	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:19:47 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18696	    248	   1800	  20744	   5108	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:20:35 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18696	    248	   1800	  20744	   5108	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+11:21:08 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18688	    248	   1800	  20736	   5100	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+12:33:56 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18896	    248	   1800	  20944	   51d0	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+12:36:07 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18904	    160	   1800	  20864	   5180	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+12:37:10 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18868	    160	   1800	  20828	   515c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+12:38:16 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18868	    160	   1800	  20828	   515c	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+12:39:47 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:16:17 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:25:35 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:27:57 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:30:47 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:10:8: error: unknown type name 'Link'
+   10 | static Link links[100];
+      |        ^~~~
+../user/pn_can_protocol.c:16:32: error: unknown type name 'Link'
+   16 | void pn_can_protocol_init_link(Link*link){
+      |                                ^~~~
+../user/pn_can_protocol.c:10:13: warning: 'links' defined but not used [-Wunused-variable]
+   10 | static Link links[100];
+      |             ^~~~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:31:12 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:11:8: error: unknown type name 'Link'
+   11 | static Link links[10];
+      |        ^~~~
+../user/pn_can_protocol.c:17:32: error: unknown type name 'Link'
+   17 | void pn_can_protocol_init_link(Link*link){
+      |                                ^~~~
+../user/pn_can_protocol.c:11:13: warning: 'links' defined but not used [-Wunused-variable]
+   11 | static Link links[10];
+      |             ^~~~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:31:48 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:17:32: error: unknown type name 'Link'
+   17 | void pn_can_protocol_init_link(Link*link){
+      |                                ^~~~
+../user/pn_can_protocol.c:11:25: warning: 'links' defined but not used [-Wunused-variable]
+   11 | static SyncLayerCanLink links[10];
+      |                         ^~~~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:32:09 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:11:25: warning: 'links' defined but not used [-Wunused-variable]
+   11 | static SyncLayerCanLink links[10];
+      |                         ^~~~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:32:26 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:11:25: warning: 'links' defined but not used [-Wunused-variable]
+   11 | static SyncLayerCanLink links[10];
+      |                         ^~~~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:33:10 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:11:25: warning: 'links' defined but not used [-Wunused-variable]
+   11 | static SyncLayerCanLink links[10];
+      |                         ^~~~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:35:48 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:12:16: warning: 'link_size' defined but not used [-Wunused-variable]
+   12 | static uint8_t link_size = 0;
+      |                ^~~~~~~~~
+../user/pn_can_protocol.c:11:25: warning: 'links' defined but not used [-Wunused-variable]
+   11 | static SyncLayerCanLink links[10];
+      |                         ^~~~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:38:58 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_init_link':
+../user/pn_can_protocol.c:21:23: error: incompatible types when assigning to type 'SyncLayerCanLink' from type 'SyncLayerCanLink *'
+   21 |  links[link_size++] = link;
+      |                       ^~~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+14:39:17 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18876	    160	   1800	  20836	   5164	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:56:36 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc "../user/sync_layer_can.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/sync_layer_can.d" -MT"user/sync_layer_can.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/sync_layer_can.o"
+arm-none-eabi-gcc "../user/user.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/user.d" -MT"user/user.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/user.o"
+../user/pn_can_protocol.c: In function 'console':
+../user/pn_can_protocol.c:33:2: warning: implicit declaration of function 'va_start' [-Wimplicit-function-declaration]
+   33 |  va_start(args, msg);
+      |  ^~~~~~~~
+../user/pn_can_protocol.c:35:2: warning: implicit declaration of function 'va_end' [-Wimplicit-function-declaration]
+   35 |  va_end(args);
+      |  ^~~~~~
+At top level:
+../user/pn_can_protocol.c:18:13: warning: 'console' defined but not used [-Wunused-function]
+   18 | static void console(ConsoleStatus status, const char *func_name,
+      |             ^~~~~~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:59:07 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'console':
+../user/pn_can_protocol.c:33:2: warning: implicit declaration of function 'va_start' [-Wimplicit-function-declaration]
+   33 |  va_start(args, msg);
+      |  ^~~~~~~~
+../user/pn_can_protocol.c:35:2: warning: implicit declaration of function 'va_end' [-Wimplicit-function-declaration]
+   35 |  va_end(args);
+      |  ^~~~~~
+At top level:
+../user/pn_can_protocol.c:18:13: warning: 'console' defined but not used [-Wunused-function]
+   18 | static void console(ConsoleStatus status, const char *func_name,
+      |             ^~~~~~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+14:59:21 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:19:13: warning: 'console' defined but not used [-Wunused-function]
+   19 | static void console(ConsoleStatus status, const char *func_name,
+      |             ^~~~~~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:01:49 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:04:52 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_init_link':
+../user/pn_can_protocol.c:49:10: error: 'status' undeclared (first use in this function); did you mean 'ITStatus'?
+   49 |  console(status, func_name, msg)
+      |          ^~~~~~
+      |          ITStatus
+../user/pn_can_protocol.c:49:10: note: each undeclared identifier is reported only once for each function it appears in
+../user/pn_can_protocol.c:49:18: error: 'func_name' undeclared (first use in this function)
+   49 |  console(status, func_name, msg)
+      |                  ^~~~~~~~~
+../user/pn_can_protocol.c:49:29: error: 'msg' undeclared (first use in this function)
+   49 |  console(status, func_name, msg)
+      |                             ^~~
+../user/pn_can_protocol.c:49:33: error: expected ';' before 'links'
+   49 |  console(status, func_name, msg)
+      |                                 ^
+      |                                 ;
+   50 |  links[link_size++] = *link;
+      |  ~~~~~                           
+At top level:
+../user/pn_can_protocol.c:15:16: warning: 'link_size' defined but not used [-Wunused-variable]
+   15 | static uint8_t link_size = 0;
+      |                ^~~~~~~~~
+../user/pn_can_protocol.c:14:25: warning: 'links' defined but not used [-Wunused-variable]
+   14 | static SyncLayerCanLink links[10];
+      |                         ^~~~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:05:37 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_init_link':
+../user/pn_can_protocol.c:49:10: error: 'status' undeclared (first use in this function); did you mean 'ITStatus'?
+   49 |  console(status, func_name, msg)
+      |          ^~~~~~
+      |          ITStatus
+../user/pn_can_protocol.c:49:10: note: each undeclared identifier is reported only once for each function it appears in
+../user/pn_can_protocol.c:49:18: error: 'func_name' undeclared (first use in this function)
+   49 |  console(status, func_name, msg)
+      |                  ^~~~~~~~~
+../user/pn_can_protocol.c:49:29: error: 'msg' undeclared (first use in this function)
+   49 |  console(status, func_name, msg)
+      |                             ^~~
+../user/pn_can_protocol.c:49:33: error: expected ';' before 'links'
+   49 |  console(status, func_name, msg)
+      |                                 ^
+      |                                 ;
+   50 |  links[link_size++] = *link;
+      |  ~~~~~                           
+At top level:
+../user/pn_can_protocol.c:15:16: warning: 'link_size' defined but not used [-Wunused-variable]
+   15 | static uint8_t link_size = 0;
+      |                ^~~~~~~~~
+../user/pn_can_protocol.c:14:25: warning: 'links' defined but not used [-Wunused-variable]
+   14 | static SyncLayerCanLink links[PN_CAN_PROTOCOL_MAX_LINK_SIZE];
+      |                         ^~~~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:05:54 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_init_link':
+../user/pn_can_protocol.c:49:10: error: 'status' undeclared (first use in this function); did you mean 'ITStatus'?
+   49 |  console(status, func_name, msg)
+      |          ^~~~~~
+      |          ITStatus
+../user/pn_can_protocol.c:49:10: note: each undeclared identifier is reported only once for each function it appears in
+../user/pn_can_protocol.c:49:18: error: 'func_name' undeclared (first use in this function)
+   49 |  console(status, func_name, msg)
+      |                  ^~~~~~~~~
+../user/pn_can_protocol.c:49:29: error: 'msg' undeclared (first use in this function)
+   49 |  console(status, func_name, msg)
+      |                             ^~~
+../user/pn_can_protocol.c:49:33: error: expected ';' before 'links'
+   49 |  console(status, func_name, msg)
+      |                                 ^
+      |                                 ;
+   50 |  links[link_size++] = *link;
+      |  ~~~~~                           
+At top level:
+../user/pn_can_protocol.c:15:16: warning: 'link_size' defined but not used [-Wunused-variable]
+   15 | static uint8_t link_size = 0;
+      |                ^~~~~~~~~
+../user/pn_can_protocol.c:14:25: warning: 'links' defined but not used [-Wunused-variable]
+   14 | static SyncLayerCanLink links[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+      |                         ^~~~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:16:01 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:19:19 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:19:23 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:23:28 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:23:42 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:41:57 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:17:8: error: unknown type name 'Map'
+   17 | static Map map[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+      |        ^~~
+../user/pn_can_protocol.c:17:12: warning: 'map' defined but not used [-Wunused-variable]
+   17 | static Map map[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+      |            ^~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:42:09 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c:18:12: warning: 'map' defined but not used [-Wunused-variable]
+   18 | static Map map[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+      |            ^~~
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+15:45:31 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:19: error: incompatible types when assigning to type 'Map' from type 'Map *'
+   58 |  map[link_size] = map_create();
+      |                   ^~~~~~~~~~
+../user/pn_can_protocol.c:59:19: error: invalid operands to binary == (have 'Map' and 'void *')
+   59 |  if(map[link_size]==NULL){
+      |     ~~~~~~~~~~~~~~^~
+      |        |
+      |        Map
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:45:50 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:19: error: lvalue required as unary '&' operand
+   58 |  map[link_size] = &map_create();
+      |                   ^
+../user/pn_can_protocol.c:59:19: error: invalid operands to binary == (have 'Map' and 'void *')
+   59 |  if(map[link_size]==NULL){
+      |     ~~~~~~~~~~~~~~^~
+      |        |
+      |        Map
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:56:12 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:17: error: assignment to expression with array type
+   58 |  map[link_size] = map_create();
+      |                 ^
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:57:20 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:22: error: incompatible types when assigning to type 'Map' from type 'Map *'
+   58 |  map[link_size][1] = map_create();
+      |                      ^~~~~~~~~~
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:57:40 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:17: error: assignment to expression with array type
+   58 |  map[link_size] = (Map*)map_create();
+      |                 ^
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+15:58:24 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
+16:43:42 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:17: error: assignment to expression with array type
+   58 |  map[link_size] = map_create();
+      |                 ^
+../user/pn_can_protocol.c:60:11: error: 'CONSOLE_ERRORll' undeclared (first use in this function); did you mean 'CONSOLE_ERROR'?
+   60 |   console(CONSOLE_ERRORll, __func__, "Heap full\n");
+      |           ^~~~~~~~~~~~~~~
+      |           CONSOLE_ERROR
+../user/pn_can_protocol.c:60:11: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+16:43:50 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:19: error: incompatible types when assigning to type 'Map' from type 'Map *'
+   58 |  map[link_size] = map_create();
+      |                   ^~~~~~~~~~
+../user/pn_can_protocol.c:59:19: error: invalid operands to binary == (have 'Map' and 'void *')
+   59 |  if(map[link_size]==NULL){
+      |     ~~~~~~~~~~~~~~^~
+      |        |
+      |        Map
+../user/pn_can_protocol.c:60:11: error: 'CONSOLE_ERRORll' undeclared (first use in this function); did you mean 'CONSOLE_ERROR'?
+   60 |   console(CONSOLE_ERRORll, __func__, "Heap full\n");
+      |           ^~~~~~~~~~~~~~~
+      |           CONSOLE_ERROR
+../user/pn_can_protocol.c:60:11: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+20:02:23 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:19: error: incompatible types when assigning to type 'Map' from type 'Map *'
+   58 |  map[link_size] = map_create();
+      |                   ^~~~~~~~~~
+../user/pn_can_protocol.c:59:19: error: invalid operands to binary == (have 'Map' and 'void *')
+   59 |  if(map[link_size]==NULL){
+      |     ~~~~~~~~~~~~~~^~
+      |        |
+      |        Map
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+20:02:32 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:17: error: assignment to expression with array type
+   58 |  map[link_size] = map_create();
+      |                 ^
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+20:03:03 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:18: error: lvalue required as left operand of assignment
+   58 |  &map[link_size] = map_create();
+      |                  ^
+../user/pn_can_protocol.c:59:19: error: invalid operands to binary == (have 'Map' and 'void *')
+   59 |  if(map[link_size]==NULL){
+      |     ~~~~~~~~~~~~~~^~
+      |        |
+      |        Map
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+20:03:11 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+../user/pn_can_protocol.c: In function 'pn_can_protocol_addLink':
+../user/pn_can_protocol.c:58:19: error: incompatible types when assigning to type 'Map' from type 'Map *'
+   58 |  map[link_size] = map_create();
+      |                   ^~~~~~~~~~
+../user/pn_can_protocol.c:59:19: error: invalid operands to binary == (have 'Map' and 'void *')
+   59 |  if(map[link_size]==NULL){
+      |     ~~~~~~~~~~~~~~^~
+      |        |
+      |        Map
+make: *** [user/subdir.mk:25: user/pn_can_protocol.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+20:03:41 **** Incremental Build of configuration Debug for project pn_can_protocol ****
+make -j4 all 
+arm-none-eabi-gcc "../user/pn_can_protocol.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/can_com" -I"C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user" -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"user/pn_can_protocol.d" -MT"user/pn_can_protocol.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "user/pn_can_protocol.o"
+arm-none-eabi-gcc -o "pn_can_protocol.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\peter\OneDrive\Desktop\Github\pn_can_protocol\pn_can_protocol\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pn_can_protocol.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: pn_can_protocol.elf
+ 
+arm-none-eabi-size   pn_can_protocol.elf 
+arm-none-eabi-objdump -h -S  pn_can_protocol.elf  > "pn_can_protocol.list"
+   text	   data	    bss	    dec	    hex	filename
+  18920	    160	   1800	  20880	   5190	pn_can_protocol.elf
+Finished building: default.size.stdout
+ 
+Finished building: pn_can_protocol.list
+ 
