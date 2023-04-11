@@ -24,7 +24,7 @@ user/pn_can_protocol.o: ../user/pn_can_protocol.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user/user.h
+ C:/Users/NIRUJA/Desktop/Github/pn_can_protocol/pn_can_protocol/user/user.h
 ../user/pn_can_protocol.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:
@@ -51,4 +51,4 @@ user/pn_can_protocol.o: ../user/pn_can_protocol.c \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
-C:/Users/peter/OneDrive/Desktop/Github/pn_can_protocol/pn_can_protocol/user/user.h:
+C:/Users/NIRUJA/Desktop/Github/pn_can_protocol/pn_can_protocol/user/user.h:

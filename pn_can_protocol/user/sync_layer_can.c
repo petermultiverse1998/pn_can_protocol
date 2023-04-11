@@ -8,11 +8,11 @@
 #include "sync_layer_can.h"
 #include "stdarg.h"
 
-#define SYNC_LAYER_CAN_TRANSMIT_TIMEOUT 1000
-#define SYNC_LAYER_CAN_RECEIVE_TIMEOUT 1000
+#define SYNC_LAYER_CAN_TRANSMIT_TIMEOUT 10000
+#define SYNC_LAYER_CAN_RECEIVE_TIMEOUT 10000
 
-#define SYNC_LAYER_CAN_TX_SEND_ACK_RETRY 2
-#define SYNC_LAYER_CAN_TX_SEND_RETRY 2
+#define SYNC_LAYER_CAN_TX_SEND_ACK_RETRY 3
+#define SYNC_LAYER_CAN_TX_SEND_RETRY 3
 
 /******************CONSOLE*****************************/
 typedef enum {
@@ -20,9 +20,10 @@ typedef enum {
 } ConsoleStatus;
 static void console(ConsoleStatus status, const char *func_name,
 		const char *msg, ...) {
-//	if (status == CONSOLE_INFO)
-//		return;
+	if (status == CONSOLE_INFO)
+		return;
 	//TODO make naked and show all registers
+
 	if (status == CONSOLE_ERROR) {
 		printf("uart.c|%s> ERROR :", func_name);
 	} else if (status == CONSOLE_INFO) {
@@ -58,8 +59,8 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 }
 
 /******************TRANSMIT***************************/
-static void (*tx_callback_func)(SyncLayerCanLink *link,
-		SyncLayerCanData *data, uint8_t status);
+static void (*tx_callback_func)(SyncLayerCanLink *link, SyncLayerCanData *data,
+		uint8_t status);
 static void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
 		uint8_t status) {
 	if (tx_callback_func == NULL) {
@@ -324,8 +325,8 @@ uint8_t sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 }
 
 /******************RECEIVE*********************************/
-static void (*rx_callback_func)(SyncLayerCanLink *link,
-		SyncLayerCanData *data, uint8_t status);
+static void (*rx_callback_func)(SyncLayerCanLink *link, SyncLayerCanData *data,
+		uint8_t status);
 static void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
 		uint8_t status) {
 	if (rx_callback_func == NULL) {
@@ -338,21 +339,13 @@ static void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
 uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data) {
 	uint8_t bytes[8] = { 0 };
-	uint8_t is_failed = 0;
+	SyncLayerCanTrack prev_track = data->track;
 
 	if (data->track == SYNC_LAYER_CAN_RECEIVE_SUCCESS) {
 		rxCallback(link, data, 1);
 		return 1;
 	} else if (data->track == SYNC_LAYER_CAN_RECEIVE_FAILED) {
 		rxCallback(link, data, 0);
-	}
-
-	/* Check transmit timeout */
-	if (data->time_elapse > SYNC_LAYER_CAN_RECEIVE_TIMEOUT) {
-		console(CONSOLE_ERROR, __func__, "Data received 0x%0x timeout %d\n",
-				data->id, SYNC_LAYER_CAN_RECEIVE_TIMEOUT);
-		data->track = SYNC_LAYER_CAN_RECEIVE_FAILED;
-		rxCallback(link, data, 0);	//failed
 		return 1;
 	}
 
@@ -366,7 +359,6 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 			console(CONSOLE_ERROR, __func__,
 					"Start ack 0x%0x of data 0x%0x send failed\n",
 					link->start_ack_ID, data->id);
-			is_failed = 1;
 		} else {
 			/* Can sending success */
 			data->track = SYNC_LAYER_CAN_DATA;
@@ -379,19 +371,20 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 		*(uint32_t*) bytes = data->id;
 		*(uint16_t*) ((uint32_t*) bytes + 1) = data->count;
 		if (!canSend(link->data_ack_ID, bytes, 8)) {
-			/* Can sending success */
+			/* Can sending failed */
 			console(CONSOLE_ERROR, __func__,
 					"Data received ack 0x%0x of data 0x%0x send failed\n",
 					link->data_ack_ID, data->id);
-			is_failed = 1;
 		} else {
-			/* Can sending failed */
+			/* Can sending success */
 			console(CONSOLE_INFO, __func__,
 					"Data received ack 0x%0x of data 0x%0x send successful\n",
 					link->data_ack_ID, data->id);
 			if (data->count == data->size) {
 				/* Data receive complete */
 				data->track = SYNC_LAYER_CAN_END_REQUEST;
+			} else {
+				data->track = SYNC_LAYER_CAN_DATA;
 			}
 		}
 	} else if (data->track == SYNC_LAYER_CAN_DATA_COUNT_RESET_ACK) {
@@ -403,12 +396,12 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 			console(CONSOLE_ERROR, __func__,
 					"Data count reset request 0x%0x of data 0x%0x send failed\n",
 					link->data_count_reset_ack_ID, data->id);
-			is_failed = 1;
 		} else {
 			/* Can sending failed */
 			console(CONSOLE_INFO, __func__,
 					"Data count reset request 0x%0x of data 0x%0x send successful\n",
 					link->data_count_reset_ack_ID, data->id);
+			data->track = SYNC_LAYER_CAN_DATA;
 		}
 	} else if (data->track == SYNC_LAYER_CAN_END_ACK) {
 		*(uint32_t*) bytes = data->id;
@@ -418,7 +411,6 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 			console(CONSOLE_ERROR, __func__,
 					"Data received ack 0x%0x of data 0x%0x send failed\n",
 					link->end_ack_ID, data->id);
-			is_failed = 1;
 		} else {
 			/* Can sending failed */
 			data->track = SYNC_LAYER_CAN_RECEIVE_SUCCESS;
@@ -428,21 +420,24 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 		}
 	}
 
-	data->time_elapse = timeInMillis();
-	if (data->time_elapse == 0)
-		console(CONSOLE_WARNING, __func__, "Time elapse %d\n",
-				data->time_elapse);
+	if (prev_track != data->track) {
+		data->time_elapse = timeInMillis();
+		if (data->time_elapse == 0)
+			console(CONSOLE_WARNING, __func__, "Time elapse %d\n",
+					data->time_elapse);
+	}
 
-	if (is_failed) {
-		console(CONSOLE_ERROR, __func__, "Data 0x%0x received failed\n",
-				data->id);
+	/* Check transmit timeout */
+	if ((timeInMillis() - data->time_elapse) > SYNC_LAYER_CAN_RECEIVE_TIMEOUT) {
+		console(CONSOLE_WARNING, __func__, "Data receive 0x%0x timeout %d\n",
+				data->id, SYNC_LAYER_CAN_RECEIVE_TIMEOUT);
 		data->track = SYNC_LAYER_CAN_RECEIVE_FAILED;
 	}
 
 	return 0;
 }
 
-uint8_t sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
+void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len) {
 	uint32_t data_id;
@@ -475,7 +470,7 @@ uint8_t sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 			&& can_id == link->data_count_reset_req_ID) {
 		/* DATA COUNT RESET */
 		data_id = *(uint32_t*) can_bytes;
-		if (can_id != data->id) {
+		if (data_id != data->id) {
 			/* ID doesn't match */
 			console(CONSOLE_ERROR, __func__,
 					"Data count reset request 0x%0x of data 0x%0x contains wrong ID 0x%0x\n",
@@ -489,15 +484,15 @@ uint8_t sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 			uint16_t count = *(uint16_t*) ((uint32_t*) can_bytes + 1);
 			data->track = SYNC_LAYER_CAN_DATA_COUNT_RESET_ACK;
 			console(CONSOLE_WARNING, __func__,
-					"Data 0x%0x count %d reset to %d", data_id, data->count,
+					"Data 0x%0x count %d reset to %d\n", data_id, data->count,
 					count);
 			data->count = count;
 		}
 	} else if (data->track == SYNC_LAYER_CAN_END_REQUEST
-			&& can_id == link->end_ack_ID) {
+			&& can_id == link->end_req_ID) {
 		/* END */
 		data_id = *(uint32_t*) can_bytes;
-		if (can_id != data->id) {
+		if (data_id != data->id) {
 			/* ID doesn't match */
 			console(CONSOLE_ERROR, __func__,
 					"End ack 0x%0x of data 0x%0x contains wrong ID 0x%0x\n",
@@ -514,18 +509,17 @@ uint8_t sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 
 	if (is_failed) {
 		data->track = SYNC_LAYER_CAN_RECEIVE_FAILED;
-		return 0;
 	}
-	return 1;
 }
 
 /*******************COMMON****************************/
 
-void sync_layer_can_init(uint8_t (*canSendFunc)(uint32_t id, uint8_t *bytes, uint8_t len),
-		void (*txCallbackFunc)(SyncLayerCanLink *link,
-				SyncLayerCanData *data, uint8_t status),
-		void (*rxCallbackFunc)(SyncLayerCanLink *link,
-				SyncLayerCanData *data, uint8_t status)) {
+void sync_layer_can_init(
+		uint8_t (*canSendFunc)(uint32_t id, uint8_t *bytes, uint8_t len),
+		void (*txCallbackFunc)(SyncLayerCanLink *link, SyncLayerCanData *data,
+				uint8_t status),
+		void (*rxCallbackFunc)(SyncLayerCanLink *link, SyncLayerCanData *data,
+				uint8_t status)) {
 	can_send_func = canSendFunc;
 	tx_callback_func = txCallbackFunc;
 	rx_callback_func = rxCallbackFunc;

@@ -1,8 +1,8 @@
 ../user/user.c:13:13:console	16	static
 ../user/user.c:22:13:canInit	48	static
 ../user/user.c:48:6:canRxInterrupt	16	static
-../user/user.c:63:16:canSend	32	static
+../user/user.c:63:16:canSend	24	static
 ../user/user.c:79:13:txCallback	24	static
-../user/user.c:88:13:rxCallback	24	static
-../user/user.c:96:6:init	8	static
-../user/user.c:119:6:loop	8	static
+../user/user.c:88:13:rxCallback	32	static
+../user/user.c:107:6:init	8	static
+../user/user.c:131:6:loop	8	static

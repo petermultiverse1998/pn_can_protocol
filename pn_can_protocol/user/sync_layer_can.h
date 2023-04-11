@@ -55,7 +55,7 @@ uint8_t sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 /////////////////////////////////RECEIVING////////////////////////////////
 uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data);
-uint8_t sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
+void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len);
 
