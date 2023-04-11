@@ -1,4 +1,0 @@
-../user/pn_can_protocol.c:24:13:console	24	static
-../user/pn_can_protocol.c:47:6:pn_can_protocol_addLink	32	static
-../user/pn_can_protocol.c:72:6:pn_can_protocol_send	24	static
-../user/pn_can_protocol.c:76:6:pn_can_protocol_loop	4	static

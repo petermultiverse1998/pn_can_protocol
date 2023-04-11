@@ -1,8 +1,0 @@
-que.c:16:6:que_create	2
-que.c:36:6:que_push	4
-que.c:67:9:que_get	2
-que.c:78:6:que_pop	3
-que.c:102:6:que_delete	3
-que.c:117:6:que_print	2
-que.c:134:5:que_isExist	3
-que.c:150:5:que_getLeakedBytes	2
