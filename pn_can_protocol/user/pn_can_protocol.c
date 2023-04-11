@@ -6,18 +6,26 @@
  */
 
 #include "pn_can_protocol.h"
-#include "sync_layer_can.h"
 #include "stdarg.h"
 #include "map.h"
+#include "malloc.h"
+#include "main.h"
 
 #define PN_CAN_PROTOCOL_LINK_MAX_SIZE 10
 
-static SyncLayerCanLink links[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+static SyncLayerCanLink* links[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+static uint8_t (*canSend[PN_CAN_PROTOCOL_LINK_MAX_SIZE])(uint32_t id, uint8_t *bytes, uint8_t len);
+static uint8_t (*txCallback[PN_CAN_PROTOCOL_LINK_MAX_SIZE])(uint32_t id,uint8_t*bytes,uint16_t size,uint8_t status);
+static uint8_t (*rxCallback[PN_CAN_PROTOCOL_LINK_MAX_SIZE])(uint32_t id,uint8_t*bytes,uint16_t size,uint8_t status);
+
 static uint8_t link_size = 0;
 
-static Map* map[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+static Map* tx_map[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+static Map* rx_map[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+static uint32_t memory_leak_tx[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
+static uint32_t memory_leak_rx[PN_CAN_PROTOCOL_LINK_MAX_SIZE];
 
-/*****************************CONSOLE*****************************\*/
+/*****************************CONSOLE****************************/
 typedef enum {
 	CONSOLE_ERROR, CONSOLE_INFO, CONSOLE_WARNING
 } ConsoleStatus;
@@ -41,38 +49,308 @@ static void console(ConsoleStatus status, const char *func_name,
 	va_end(args);
 }
 
+/***************************PRIVATE*****************************/
+static int getLinkIndex(SyncLayerCanLink *link){
+	/* Get index of link if not found return -1 */
+	for(int i=0;i<PN_CAN_PROTOCOL_LINK_MAX_SIZE;i++){
+		if(links[i]==link)
+			return i;
+	}
+	return -1;
+}
 
+static void txCallbackFunc(SyncLayerCanLink* link,SyncLayerCanData* data,uint8_t status){
+	int link_index = getLinkIndex(link);
+	int is_cleared = txCallback[link_index](data->id,data->bytes,data->size,status);
+	if(is_cleared){
+		if(data->dynamically_alocated)
+			free(data->bytes);
+		free(data);
+		memory_leak_tx[link_index]-=sizeof(SyncLayerCanData);
+	}
+}
 
-uint8_t (*can_send_func)(uint32_t id, uint8_t *bytes, uint8_t len);
-void pn_can_protocol_addLink(SyncLayerCanLink *link) {
+static void rxCallbackFunc(SyncLayerCanLink* link,SyncLayerCanData* data,uint8_t status){
+	int link_index = getLinkIndex(link);
+	int is_cleared = rxCallback[link_index](data->id,data->bytes,data->size,status);
+	if(is_cleared){
+		if(data->dynamically_alocated)
+			free(data->bytes);
+		free(data);
+		memory_leak_rx[link_index]-=sizeof(SyncLayerCanData);
+	}
+}
+
+/**************************PUBLIC*******************************/
+/**
+ * This will add the link
+ * @param link			: Link where data is to be transmitted or received
+ * @param canSendFunc	: Function that sends can
+ * @param txCallbackFunc: Function that is called after data is transmitted successfully or failed to transmit successfully
+ * @param rxCallbackFunc: Function that is called after data is received successfully or failed to receive successfully
+ * @return				: 1 if everything OK else 0
+ */
+uint8_t pn_can_protocol_addLink(SyncLayerCanLink *link,
+		uint8_t (*canSendFunc)(uint32_t id, uint8_t *bytes, uint8_t len),
+		uint8_t (*txCallbackFunc)(uint32_t id,uint8_t*bytes,uint16_t size,uint8_t status),
+		uint8_t (*rxCallbackFunc)(uint32_t id,uint8_t*bytes,uint16_t size,uint8_t status)) {
 	if (link == NULL) {
 		console(CONSOLE_ERROR, __func__, "Link is NULL\n");
-		return;
+		return 0;
 	}
 	if (link_size >= PN_CAN_PROTOCOL_LINK_MAX_SIZE) {
 		console(CONSOLE_ERROR, __func__, "Max size reached %d\n",
 		PN_CAN_PROTOCOL_LINK_MAX_SIZE);
-		return;
+		return 0;
 	}
 
-	map[link_size] = map_create();
-	if(map[link_size]==NULL){
-		console(CONSOLE_ERROR, __func__, "Heap full\n");
-		return;
+	tx_map[link_size] = map_create();
+	if(tx_map[link_size]==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full.xTx Map can't be created\n");
+		return 0;
+	}
+
+	rx_map[link_size] = map_create();
+	if(rx_map[link_size]==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full. Rx Map can't be created\n");
+		return 0;
 	}
 
 
-	links[link_size] = *link;
+	links[link_size] = link;
+	canSend[link_size] = canSendFunc;
+	txCallback[link_size] = txCallbackFunc;
+	rxCallback[link_size] = rxCallbackFunc;
+
 	console(CONSOLE_INFO, __func__, "Link 0x%0x is added in index %d\n", link,
 			link_size);
 
+
+
 	link_size++;
+
+	return 1;
 }
 
-void pn_can_protocol_send(SyncLayerCanLink *link, uint8_t *data, uint16_t size) {
+/*
+ * This will add the data to be transmitted in link
+ * @param link		: Link where data is to be transmitted
+ * @param id		: Can ID of message
+ * @param data		: Actual data is to be transmitted
+ * @param size		: Size of data
+ * @return			: 1 if successfully added else 0
+ */
+uint8_t pn_can_protocol_addTxMessage(SyncLayerCanLink *link, uint32_t id, uint8_t *data, uint16_t size) {
+	int link_index = getLinkIndex(link);
+	if(link_index==-1){
+		console(CONSOLE_ERROR, __func__, "0x%0x link is not found.\n");
+		return 0;
+	}
 
+	SyncLayerCanData* sync_data = (SyncLayerCanData*)malloc(sizeof(SyncLayerCanData));
+	if(sync_data==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full. Sync Data can't be created\n");
+		return 0;
+	}
+	memory_leak_tx[link_index]+=sizeof(SyncLayerCanData);
+
+	uint8_t* data_bytes = (uint8_t*)malloc(size);
+	if(data_bytes==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full. data_bytes can't be allocated\n");
+		return 0;
+	}
+
+	for(uint16_t i=0;i<(size/8);i++)
+		*((uint64_t*)data_bytes+i)= *((uint64_t*)data+i);
+	for(uint16_t i=(size/8)*8;i<size;i++)
+		data_bytes[i] = data[i];
+
+
+	sync_data->id = id;
+	sync_data->bytes = data_bytes;
+	sync_data->size = size;
+	sync_data->track = SYNC_LAYER_CAN_START_REQUEST;
+	sync_data->count = 0;
+	sync_data->time_elapse = 0;
+	sync_data->data_retry = 0;
+	sync_data->dynamically_alocated = 1;
+
+	if(map_put(tx_map[link_index], id, sync_data)==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full. Sync data can't be put\n");
+		return 0;
+	}
+	return 1;
 }
 
-void pn_can_protocol_loop() {
+/*
+ * This will add reference of the data to be transmitted in link
+ * @param link		: Link where data is to be transmitted
+ * @param id		: Can ID of message
+ * @param data		: reference to the data is to be transmitted
+ * @param size		: Size of data
+ * @return			: 1 if successfully added else 0
+ */
+uint8_t pn_can_protocol_addTxMessagePtr(SyncLayerCanLink *link, uint32_t id, uint8_t *data, uint16_t size) {
+	int link_index = getLinkIndex(link);
+	if(link_index==-1){
+		console(CONSOLE_ERROR, __func__, "0x%0x link is not found.\n");
+		return 0;
+	}
 
+	SyncLayerCanData* sync_data = (SyncLayerCanData*)malloc(sizeof(SyncLayerCanData));
+	if(sync_data==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full. Sync Data can't be created\n");
+		return 0;
+	}
+	memory_leak_rx[link_index]+=sizeof(SyncLayerCanData);
+
+	sync_data->id = id;
+	sync_data->bytes = data;
+	sync_data->size = size;
+	sync_data->track = SYNC_LAYER_CAN_START_REQUEST;
+	sync_data->count = 0;
+	sync_data->time_elapse = 0;
+	sync_data->data_retry = 0;
+	sync_data->dynamically_alocated = 0;
+
+	if(map_put(tx_map[link_index], id, sync_data)==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full. Sync data can't be put\n");
+		return 0;
+	}
+	return 1;
+}
+
+/*
+ * This will add reference of the data as container to be received in link
+ * @param link		: Link where data is to be received
+ * @param id		: Can ID of message to be received
+ * @param data		: reference to the data is to be received
+ * @param size		: Size of data
+ * @return			: 1 if successfully added else 0
+ */
+uint8_t pn_can_protocol_addRxMessagePtr(SyncLayerCanLink *link, uint32_t id, uint8_t *data, uint16_t size) {
+	int link_index = getLinkIndex(link);
+	if(link_index==-1){
+		console(CONSOLE_ERROR, __func__, "0x%0x link is not found.\n");
+		return 0;
+	}
+
+	SyncLayerCanData* sync_data = (SyncLayerCanData*)malloc(sizeof(SyncLayerCanData));
+	if(sync_data==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full. Sync Data can't be created\n");
+		return 0;
+	}
+	memory_leak_rx[link_index]+=sizeof(SyncLayerCanData);
+
+	sync_data->id = id;
+	sync_data->bytes = data;
+	sync_data->size = size;
+	sync_data->track = SYNC_LAYER_CAN_START_REQUEST;
+	sync_data->count = 0;
+	sync_data->time_elapse = 0;
+	sync_data->data_retry = 0;
+	sync_data->dynamically_alocated = 0;
+
+	if(map_put(rx_map[link_index], id, sync_data)==NULL){
+		console(CONSOLE_ERROR, __func__, "Heap is full. Sync data can't be put\n");
+		return 0;
+	}
+	return 1;
+}
+
+/*
+ * This should be called in thread or timer periodically
+ * @param link	: Link where data is to be transmitted or received
+ */
+void pn_can_protocol_sendThread(SyncLayerCanLink* link) {
+	SyncLayerCanData *data;
+	int link_index = getLinkIndex(link);
+
+	/* Transmitting */
+	uint32_t tx_keys[tx_map[link_index]->size];
+	map_getKeys(tx_map[link_index], tx_keys);
+	for(int j=0;j<(tx_map[link_index]->size);j++){
+		data = (SyncLayerCanData*)map_get(tx_map[link_index], tx_keys[j]);
+		if(data==NULL){
+			console(CONSOLE_WARNING, __func__, "Key 0x%0x is not found\n",tx_keys[j]);
+			continue;
+		}
+		sync_layer_can_txSendThread(link,data,canSend[link_index],txCallbackFunc);
+	}
+
+	/* Receiving */
+	uint32_t rx_keys[rx_map[link_index]->size];
+	map_getKeys(rx_map[link_index], rx_keys);
+	for(int j=0;j<(rx_map[link_index]->size);j++){
+		data = (SyncLayerCanData*)map_get(rx_map[link_index], rx_keys[link_index]);
+		if(data==NULL){
+			console(CONSOLE_WARNING, __func__, "Key 0x%0x is not found\n",rx_keys[j]);
+			continue;
+		}
+		sync_layer_can_rxSendThread(link,data,canSend[link_index],rxCallbackFunc);
+	}
+}
+
+/*
+ * This should be called in thread or timer periodically after data is received from CAN
+ * @param link	: Link where data is to be transmitted or received
+ */
+void pn_can_protocol_recThread(SyncLayerCanLink* link,uint32_t id,uint8_t* bytes,uint16_t len){
+	SyncLayerCanData *data;
+	int link_index = getLinkIndex(link);
+	uint32_t data_id = id;
+
+	/* Transmitting */
+	uint8_t is_transmit = link->start_ack_ID==id||link->data_ack_ID||link->data_count_reset_ack_ID==id||link->end_ack_ID==id;
+	if(is_transmit){
+		data_id = *(uint32_t*)bytes;
+		data = map_get(tx_map[link_index], data_id);
+		if(data==NULL){
+			console(CONSOLE_ERROR, __func__, "sync data doesn't exist in given tx map\n");
+			return;
+		}
+		sync_layer_can_txReceiveThread(link, data, id, bytes, len);
+		return;
+	}
+
+	/* Receiving */
+	uint8_t is_receive = link->start_req_ID==id||link->data_count_reset_req_ID==id||link->end_req_ID==id;
+	if(is_receive){
+		//Is protocol id
+		data_id = *(uint32_t*)bytes;
+		if(link->start_req_ID==id){
+			//Starting
+			data = malloc(sizeof(SyncLayerCanData));
+			if(data==NULL){
+				console(CONSOLE_ERROR, __func__, "Heap is full. Sync Data can't be created\n");
+				return;
+			}
+			memory_leak_rx[link_index]+=sizeof(SyncLayerCanData);
+			uint16_t size = *(uint16_t*)((uint32_t*)bytes+1);
+
+			data->id = data_id;
+			data->bytes = (uint8_t*)malloc(size);
+			data->size = size;
+			data->track = SYNC_LAYER_CAN_START_REQUEST;
+			data->count = 0;
+			data->time_elapse = 0;
+			data->data_retry = 0;
+			data->dynamically_alocated = 1;
+
+			if(map_put(rx_map[link_index], id, data)==NULL){
+				console(CONSOLE_ERROR, __func__, "Heap is full. Sync data can't be put\n");
+				return;
+			}
+			sync_layer_can_rxReceiveThread(links[link_index], data, id, bytes, len);
+			return;
+		}
+	}else{
+		data = map_get(rx_map[link_index], data_id);
+		if(data==NULL){
+			console(CONSOLE_ERROR, __func__, "Data doesn't exist in rx_map\n");
+			return;
+		}
+		sync_layer_can_rxReceiveThread(links[link_index], data, id, bytes, len);
+		return;
+	}
 }

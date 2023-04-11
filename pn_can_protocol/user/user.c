@@ -6,16 +6,15 @@
  */
 
 #include "user.h"
-#include "sync_layer_can.h"
-#include "stdlib.h"
+#include "pn_can_protocol.h"
+
+
+static SyncLayerCanLink link = { 1, 2, 3, 4, 5, 6, 7 };
 
 /********************CONSOLE***************************/
 static void console(const char *title, const char *msg) {
 	printf("%s:: %s\n", title, msg);
 }
-
-static SyncLayerCanLink links = { 1, 2, 3, 4, 5, 6, 7 };
-static SyncLayerCanData sync_data;
 
 /************************CAN****************************/
 extern CAN_HandleTypeDef hcan;
@@ -51,11 +50,7 @@ void canRxInterrupt() {
 //	for (int i = 0; i < rx_header.DLC; ++i)
 //		printf("%d ", data[i]);
 //	printf("\n");
-	sync_layer_can_txReceiveThread(&links, &sync_data, rx_header.ExtId, data,
-			rx_header.DLC);
-//	sync_layer_can_rxReceiveThread(&links, &sync_data, rx_header.ExtId, data,
-//			rx_header.DLC);
-
+	pn_can_protocol_recThread(&link, rx_header.ExtId, data, rx_header.DLC);
 }
 
 static CAN_TxHeaderTypeDef tx_header;
@@ -76,57 +71,47 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 }
 
 /**********************MAIN THREAD****************************/
-static void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
-		uint8_t status) {
-
-//	if (status)
-//		console("Data transmit", "Success");
-//	else
-//		console("Data transmit", "Failed");
-
+static uint8_t txCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
 	printf("Data : ");
 	if(!status){
 		printf("failed\n");
-		return;
+		return 1;
 	}
-	for (int i = 0; i < data->size; i++)
-		printf("%d ", data->bytes[i]);
+	for (int i = 0; i < size; i++)
+		printf("%d ", bytes[i]);
 	printf("\n");
-	data->id++;
-	data->track = SYNC_LAYER_CAN_START_REQUEST;
+
+	return 1;
 }
 
-static void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
-		uint8_t status) {
-	if (status)
-		console("Data receive", "Success");
-	else
-		console("Data receive", "Failed");
+static uint8_t rxCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Data : ");
+	if(!status){
+		printf("failed\n");
+		return 1;
+	}
+	for (int i = 0; i < size; i++)
+		printf("%d ", bytes[i]);
+	printf("\n");
+
+	return 1;
 }
 
-uint8_t bytes[] = {1,2,3,4,[9]=10};
+uint8_t tx_bytes[] = {1,2,3,4,[9]=10};
+uint8_t rx_bytes[10];
 void init() {
 	canInit();
 	console("\n\nSOURCE INIT", "SUCCESS");
-	sync_layer_can_init(canSend, txCallback, rxCallback);
 
-	sync_data.id = 0xA;
-	sync_data.count = 0;
-	sync_data.data_retry = 0;
-	sync_data.track = SYNC_LAYER_CAN_START_REQUEST;
-	sync_data.size = 10;
-	sync_data.bytes = bytes;
+	pn_can_protocol_addLink(&link, canSend, txCallback, rxCallback);
+
+	pn_can_protocol_addTxMessagePtr(&link, 0xA, tx_bytes, sizeof(tx_bytes));
+//	pn_can_protocol_addRxMessagePtr(&link, 0xA, rx_bytes, sizeof(rx_bytes));
 
 	HAL_Delay(3000);
 }
 
 void loop() {
-//	printf("Data track : %d\n", sync_data.track);
-	sync_layer_can_txSendThread(&links, &sync_data);
-//	sync_layer_can_rxSendThread(&links, &sync_data);
-
-
-
+	pn_can_protocol_sendThread(&link);
 //	HAL_Delay(1);
-
 }

@@ -7,6 +7,7 @@
 
 #include "sync_layer_can.h"
 #include "stdarg.h"
+#include "main.h"
 
 #define SYNC_LAYER_CAN_TRANSMIT_TIMEOUT 10000
 #define SYNC_LAYER_CAN_RECEIVE_TIMEOUT 10000
@@ -42,47 +43,32 @@ static uint32_t timeInMillis() {
 	return HAL_GetTick();
 }
 
-static uint8_t (*can_send_func)(uint32_t id, uint8_t *bytes, uint8_t len);
-static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
-	if (can_send_func == NULL) {
-		console(CONSOLE_INFO, __func__, "canSendFunc is NULL\n");
-		return 0;
-	}
-	if (can_send_func(id, bytes, len)) {
-		console(CONSOLE_INFO, __func__, "CAN send success\n");
-		return 1;
-	}
-	console(CONSOLE_INFO, __func__, "CAN send failed\n");
-	return 0;
-}
-
 /******************TRANSMIT***************************/
-static void (*tx_callback_func)(SyncLayerCanLink *link,
-		SyncLayerCanData *data, uint8_t status);
-static void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
-		uint8_t status) {
-	if (tx_callback_func == NULL) {
-		console(CONSOLE_WARNING, __func__, "txCallBack is NULL\n");
-		return;
-	}
-	tx_callback_func(link, data, status);
-}
-
+/*
+ * This should be called in thread or timer periodically
+ * @param link 		: Link where data is going to be transmitted
+ * @param data		: Sync Layer Can Data
+ * @param txCallback: This is callback called if data transmitted successfully or failed to transmit data
+ * @return			: 1 txCallback is called 0 for no callback called
+ */
 uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
-		SyncLayerCanData *data) {
+		SyncLayerCanData *data,
+		uint8_t (*canSend)(uint32_t id, uint8_t *bytes, uint8_t len),
+		void (*txCallback)(SyncLayerCanLink *link,SyncLayerCanData *data,
+				uint8_t status)) {
 	uint8_t bytes[8] = { 0 };
 	SyncLayerCanTrack prev_track = data->track;
 
 	/* Check success */
 	if (data->track == SYNC_LAYER_CAN_TRANSMIT_SUCCESS) {
-		txCallback(link, data, 1);
+		txCallback(link,data, 1);
 		return 1;
 	} else if (data->track == SYNC_LAYER_CAN_TRANSMIT_FAILED) {
 		if (data->data_retry > SYNC_LAYER_CAN_TX_SEND_RETRY) {
 			/* Retry exceeds limit */
 			console(CONSOLE_ERROR, __func__, "Sending failed exceed limit %d\n",
 					data->data_retry);
-			txCallback(link, data, 0);
+			txCallback(link,data, 0);
 			return 1;
 		} else {
 			/* Retry available */
@@ -187,6 +173,14 @@ uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
 	return 0;
 }
 
+/*
+ * This should be called in thread or timer periodically
+ * @param link 			: Link where data is going to be transmitted
+ * @param data			: Sync Layer Can Data
+ * @param can_id		: Can ID received
+ * @param can_bytes		: Can bytes received
+ * @param can_bytes_len	: Can bytes length
+ */
 void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len) {
@@ -293,27 +287,26 @@ void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 }
 
 /******************RECEIVE*********************************/
-static void (*rx_callback_func)(SyncLayerCanLink *link,
-		SyncLayerCanData *data, uint8_t status);
-static void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
-		uint8_t status) {
-	if (rx_callback_func == NULL) {
-		console(CONSOLE_WARNING, __func__, "rxCallBack is NULL\n");
-		return;
-	}
-	rx_callback_func(link, data, status);
-}
-
+/*
+ * This should be called in thread or timer periodically
+ * @param link 		: Link where data is going to be received
+ * @param data		: Sync Layer Can Data
+ * @param rxCallback: This is callback called if data received successfully or failed to receive data successfully
+ * @return			: 1 rxCallback is called 0 for no callback called
+ */
 uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
-		SyncLayerCanData *data) {
+		SyncLayerCanData *data,
+		uint8_t (*canSend)(uint32_t id, uint8_t *bytes, uint8_t len),
+		void (*rxCallback)(SyncLayerCanLink *link,SyncLayerCanData *data,
+						uint8_t status)) {
 	uint8_t bytes[8] = { 0 };
 	SyncLayerCanTrack prev_track = data->track;
 
 	if (data->track == SYNC_LAYER_CAN_RECEIVE_SUCCESS) {
-		rxCallback(link, data, 1);
+		rxCallback(link,data, 1);
 		return 1;
 	} else if (data->track == SYNC_LAYER_CAN_RECEIVE_FAILED) {
-		rxCallback(link, data, 0);
+		rxCallback(link,data, 0);
 		return 1;
 	}
 
@@ -405,6 +398,14 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 	return 0;
 }
 
+/*
+ * This should be called in thread or timer periodically
+ * @param link 			: Link where data is going to be received
+ * @param data			: Sync Layer Can Data
+ * @param can_id		: Can ID received
+ * @param can_bytes		: Can bytes received
+ * @param can_bytes_len	: Can bytes length
+ */
 void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len) {
@@ -478,17 +479,5 @@ void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 	if (is_failed) {
 		data->track = SYNC_LAYER_CAN_RECEIVE_FAILED;
 	}
-}
-
-/*******************COMMON****************************/
-
-void sync_layer_can_init(uint8_t (*canSendFunc)(uint32_t id, uint8_t *bytes, uint8_t len),
-		void (*txCallbackFunc)(SyncLayerCanLink *link,
-				SyncLayerCanData *data, uint8_t status),
-		void (*rxCallbackFunc)(SyncLayerCanLink *link,
-				SyncLayerCanData *data, uint8_t status)) {
-	can_send_func = canSendFunc;
-	tx_callback_func = txCallbackFunc;
-	rx_callback_func = rxCallbackFunc;
 }
 

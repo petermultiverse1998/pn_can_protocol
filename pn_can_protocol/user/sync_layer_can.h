@@ -6,7 +6,6 @@
 #define COMMUNICATION_SYNC_LAYER_CAN_H
 
 #include "stdint.h"
-#include "main.h"
 
 typedef enum {
 	SYNC_LAYER_CAN_START_REQUEST,
@@ -37,36 +36,33 @@ typedef struct {
 	uint32_t id;
 	uint8_t *bytes;
 	uint16_t size;
-	SyncLayerCanTrack track;// Initially should SYNC_LAYER_CAN_START_REQUEST
-	uint8_t oneShot;        // 1 for one data ack, 0 for each time data ack
-	uint16_t count;         // Initialization not required
-	uint32_t time_elapse;   // Initialization not required
-	uint8_t data_retry;		// Initially should be 0
+	SyncLayerCanTrack track;		// Initially should SYNC_LAYER_CAN_START_REQUEST
+	uint8_t oneShot;        		// 1 for one data ack, 0 for each time data ack
+	uint16_t count;         		// Initialization not required
+	uint32_t time_elapse;   		// Initialization not required
+	uint8_t data_retry;				// Initially should be 0
+	uint8_t dynamically_alocated;	// 1 mean have to free bytes
 } SyncLayerCanData;
 
 //////////////////////////////////TRANSMITTING////////////////////////////
 uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
-		SyncLayerCanData *data);
+		SyncLayerCanData *data,
+		uint8_t (*canSend)(uint32_t id, uint8_t *bytes, uint8_t len),
+		void (*txCallback)(SyncLayerCanLink *link,SyncLayerCanData *data,
+						uint8_t status));
 void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len);
 
 /////////////////////////////////RECEIVING////////////////////////////////
 uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
-		SyncLayerCanData *data);
+		SyncLayerCanData *data,
+		uint8_t (*canSend)(uint32_t id, uint8_t *bytes, uint8_t len),
+		void (*rxCallback)(SyncLayerCanLink *link,SyncLayerCanData *data,
+						uint8_t status));
 void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len);
 
-////////////////////////////////COMMON////////////////////////////////////
-void sync_layer_can_init(
-		uint8_t (*canSendFunc)(uint32_t id, uint8_t *bytes, uint8_t len),
-		void (*txCallbackFunc)(SyncLayerCanLink *link, SyncLayerCanData *data,
-				uint8_t status),
-		void (*rxCallbackFunc)(SyncLayerCanLink *link, SyncLayerCanData *data,
-				uint8_t status));
-
-/////////////////////////////////TEST////////////////////////////////////
-void sync_layer_can_test();
 
 #endif //COMMUNICATION_SYNC_LAYER_CAN_H
