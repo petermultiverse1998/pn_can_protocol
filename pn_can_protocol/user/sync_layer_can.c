@@ -7,11 +7,14 @@
 
 #include "sync_layer_can.h"
 #include "stdarg.h"
+#include "main.h"
 
 #define SYNC_LAYER_CAN_TRANSMIT_TIMEOUT 10000
 #define SYNC_LAYER_CAN_RECEIVE_TIMEOUT 10000
 
 #define SYNC_LAYER_CAN_TX_SEND_RETRY 3
+
+extern CRC_HandleTypeDef hcrc;
 
 /******************CONSOLE*****************************/
 typedef enum {
@@ -42,34 +45,39 @@ static uint32_t timeInMillis() {
 	return HAL_GetTick();
 }
 
-static uint8_t (*can_send_func)(uint32_t id, uint8_t *bytes, uint8_t len);
-static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
-	if (can_send_func == NULL) {
-		console(CONSOLE_INFO, __func__, "canSendFunc is NULL\n");
-		return 0;
+static uint32_t getCRCValue(uint8_t *buffer, uint32_t len) {
+	HAL_CRC_Init(&hcrc); //Reset
+
+	uint32_t new_size = len / 4;
+	uint32_t crc = HAL_CRC_Accumulate(&hcrc, (uint32_t*) buffer, new_size);
+	uint32_t remaining = len % 4;
+	if (remaining == 0) { //Multiple of 4
+		HAL_CRC_Init(&hcrc);
+		return crc;
 	}
-	if (can_send_func(id, bytes, len)) {
-		console(CONSOLE_INFO, __func__, "CAN send success\n");
-		return 1;
-	}
-	console(CONSOLE_INFO, __func__, "CAN send failed\n");
-	return 0;
+
+	//Not multiple of 4
+	uint8_t rem_data[4];
+	for (uint32_t i = 0; i < remaining; i++)
+		rem_data[i] = buffer[i];
+	for (uint32_t i = remaining; i < 4; i++)
+		rem_data[i] = 0;
+	return HAL_CRC_Accumulate(&hcrc, (uint32_t*) rem_data, 1);
 }
 
 /******************TRANSMIT***************************/
-static void (*tx_callback_func)(SyncLayerCanLink *link,
-		SyncLayerCanData *data, uint8_t status);
-static void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
-		uint8_t status) {
-	if (tx_callback_func == NULL) {
-		console(CONSOLE_WARNING, __func__, "txCallBack is NULL\n");
-		return;
-	}
-	tx_callback_func(link, data, status);
-}
-
+/*
+ * This should be called in thread or timer periodically
+ * @param link 		: Link where data is going to be transmitted
+ * @param data		: Sync Layer Can Data
+ * @param txCallback: This is callback called if data transmitted successfully or failed to transmit data
+ * @return			: 1 txCallback is called 0 for no callback called
+ */
 uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
-		SyncLayerCanData *data) {
+		SyncLayerCanData *data,
+		uint8_t (*canSend)(uint32_t id, uint8_t *bytes, uint8_t len),
+		void (*txCallback)(SyncLayerCanLink *link, SyncLayerCanData *data,
+				uint8_t status)) {
 	uint8_t bytes[8] = { 0 };
 	SyncLayerCanTrack prev_track = data->track;
 
@@ -87,7 +95,8 @@ uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
 		} else {
 			/* Retry available */
 			console(CONSOLE_WARNING, __func__,
-					"Retrying to send data 0x%0x for %d\n", data->id, data->data_retry);
+					"Retrying to send data 0x%0x for %d\n", data->id,
+					data->data_retry);
 			data->track = SYNC_LAYER_CAN_START_REQUEST;
 			data->data_retry++;
 		}
@@ -154,8 +163,9 @@ uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
 		/* END REQ */
 
 		*(uint32_t*) bytes = data->id;
-		uint32_t crc = 0x00;	//TODO calculate crc
-		*((uint32_t*) bytes + 1) = crc;
+		data->crc = getCRCValue(data->bytes, data->size); //Calculate crc
+
+		*((uint32_t*) bytes + 1) = data->crc;
 		if (!canSend(link->end_req_ID, bytes, 8)) {
 			/* Can sending failed */
 			console(CONSOLE_WARNING, __func__,
@@ -170,7 +180,7 @@ uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
 		}
 	}
 
-	if(prev_track!=data->track){
+	if (prev_track != data->track) {
 		data->time_elapse = timeInMillis();
 		if (data->time_elapse == 0)
 			console(CONSOLE_WARNING, __func__, "Time elapse %d\n",
@@ -178,7 +188,7 @@ uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
 	}
 
 	/* Check transmit timeout */
-	if ((timeInMillis()-data->time_elapse)> SYNC_LAYER_CAN_TRANSMIT_TIMEOUT) {
+	if ((timeInMillis() - data->time_elapse) > SYNC_LAYER_CAN_TRANSMIT_TIMEOUT) {
 		console(CONSOLE_WARNING, __func__, "Data transmit 0x%0x timeout %d\n",
 				data->id, SYNC_LAYER_CAN_TRANSMIT_TIMEOUT);
 		data->track = SYNC_LAYER_CAN_TRANSMIT_FAILED;
@@ -187,6 +197,14 @@ uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
 	return 0;
 }
 
+/*
+ * This should be called in thread or timer periodically
+ * @param link 			: Link where data is going to be transmitted
+ * @param data			: Sync Layer Can Data
+ * @param can_id		: Can ID received
+ * @param can_bytes		: Can bytes received
+ * @param can_bytes_len	: Can bytes length
+ */
 void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len) {
@@ -204,8 +222,8 @@ void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 		} else {
 			/* ID matched */
 			console(CONSOLE_INFO, __func__,
-					"Start ack 0x%0x of data 0x%0x success\n", link->start_ack_ID,
-					data->id);
+					"Start ack 0x%0x of data 0x%0x success\n",
+					link->start_ack_ID, data->id);
 			data->track = SYNC_LAYER_CAN_DATA;
 		}
 	} else if (data->track == SYNC_LAYER_CAN_DATA_ACK
@@ -293,19 +311,18 @@ void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 }
 
 /******************RECEIVE*********************************/
-static void (*rx_callback_func)(SyncLayerCanLink *link,
-		SyncLayerCanData *data, uint8_t status);
-static void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
-		uint8_t status) {
-	if (rx_callback_func == NULL) {
-		console(CONSOLE_WARNING, __func__, "rxCallBack is NULL\n");
-		return;
-	}
-	rx_callback_func(link, data, status);
-}
-
+/*
+ * This should be called in thread or timer periodically
+ * @param link 		: Link where data is going to be received
+ * @param data		: Sync Layer Can Data
+ * @param rxCallback: This is callback called if data received successfully or failed to receive data successfully
+ * @return			: 1 rxCallback is called 0 for no callback called
+ */
 uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
-		SyncLayerCanData *data) {
+		SyncLayerCanData *data,
+		uint8_t (*canSend)(uint32_t id, uint8_t *bytes, uint8_t len),
+		void (*rxCallback)(SyncLayerCanLink *link, SyncLayerCanData *data,
+				uint8_t status)) {
 	uint8_t bytes[8] = { 0 };
 	SyncLayerCanTrack prev_track = data->track;
 
@@ -373,6 +390,12 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 		}
 	} else if (data->track == SYNC_LAYER_CAN_END_ACK) {
 		*(uint32_t*) bytes = data->id;
+		uint32_t crc_from_sender = data->crc;
+		data->crc = getCRCValue(data->bytes, data->size);
+		if (data->crc == crc_from_sender)
+			*(uint8_t*) ((uint32_t*) bytes + 1) = 0xFF;
+		else
+			*(uint8_t*) ((uint32_t*) bytes + 1) = 0x00;
 		/* END ACK */
 		if (!canSend(link->end_ack_ID, bytes, 8)) {
 			/* Can sending success */
@@ -405,6 +428,14 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 	return 0;
 }
 
+/*
+ * This should be called in thread or timer periodically
+ * @param link 			: Link where data is going to be received
+ * @param data			: Sync Layer Can Data
+ * @param can_id		: Can ID received
+ * @param can_bytes		: Can bytes received
+ * @param can_bytes_len	: Can bytes length
+ */
 void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len) {
@@ -460,6 +491,7 @@ void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 			&& can_id == link->end_req_ID) {
 		/* END */
 		data_id = *(uint32_t*) can_bytes;
+		data->crc = *((uint32_t*) can_bytes + 1);
 		if (data_id != data->id) {
 			/* ID doesn't match */
 			console(CONSOLE_ERROR, __func__,
@@ -478,17 +510,5 @@ void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 	if (is_failed) {
 		data->track = SYNC_LAYER_CAN_RECEIVE_FAILED;
 	}
-}
-
-/*******************COMMON****************************/
-
-void sync_layer_can_init(uint8_t (*canSendFunc)(uint32_t id, uint8_t *bytes, uint8_t len),
-		void (*txCallbackFunc)(SyncLayerCanLink *link,
-				SyncLayerCanData *data, uint8_t status),
-		void (*rxCallbackFunc)(SyncLayerCanLink *link,
-				SyncLayerCanData *data, uint8_t status)) {
-	can_send_func = canSendFunc;
-	tx_callback_func = txCallbackFunc;
-	rx_callback_func = rxCallbackFunc;
 }
 
