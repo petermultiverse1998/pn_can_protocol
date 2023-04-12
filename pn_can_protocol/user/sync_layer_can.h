@@ -42,6 +42,7 @@ typedef struct {
 	uint32_t time_elapse;   		// Initialization not required
 	uint8_t data_retry;				// Initially should be 0
 	uint8_t dynamically_alocated;	// 1 mean have to free bytes
+	uint32_t crc;					// Not needed to load
 } SyncLayerCanData;
 
 //////////////////////////////////TRANSMITTING////////////////////////////
