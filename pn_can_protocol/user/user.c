@@ -89,6 +89,7 @@ static void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data,
 		printf("failed\n");
 		return;
 	}
+
 	for (int i = 0; i < data->size; i++)
 		printf("%d ", data->bytes[i]);
 	printf("\n");
