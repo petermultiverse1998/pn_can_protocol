@@ -72,24 +72,27 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 
 /**********************MAIN THREAD****************************/
 static uint8_t txCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
-	printf("Data : ");
+	printf("Tx Data : ");
 	if(!status){
 		printf("failed\n");
 		return 1;
 	}
+	printf("0x%0x -> ",(int)id);
 	for (int i = 0; i < size; i++)
 		printf("%d ", bytes[i]);
 	printf("\n");
-
+	if(id<0x20)
+		pn_can_protocol_addTxMessagePtr(&link, id+1, bytes, size);
 	return 1;
 }
 
 static uint8_t rxCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
-	printf("Data : ");
+	printf("Rx Data : ");
 	if(!status){
 		printf("failed\n");
 		return 1;
 	}
+	printf("0x%0x -> ",(int)id);
 	for (int i = 0; i < size; i++)
 		printf("%d ", bytes[i]);
 	printf("\n");
@@ -113,5 +116,5 @@ void init() {
 
 void loop() {
 	pn_can_protocol_sendThread(&link);
-//	HAL_Delay(1);
+//	HAL_Delay(1000);
 }
