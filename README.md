@@ -1,4 +1,4 @@
-# pn_can_protocol
+# PN CAN Protocol
 This is protocol for transmitting data via CAN. Its features and pros are :  
 → Data of <b>any size</b> can be transmitted and received  
 → <b>Self recovery</b> of data in case there are missing data  
