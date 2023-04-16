@@ -1,9 +1,0 @@
-map.c:16:6:map_create	2
-map.c:34:6:map_getKeys	3
-map.c:51:10:map_get	3
-map.c:67:10:map_getKey	3
-map.c:86:6:map_put	4
-map.c:121:6:map_remove	7
-map.c:159:6:map_delete	4
-map.c:184:6:map_print	2
-map.c:199:5:map_getLeakedBytes	2

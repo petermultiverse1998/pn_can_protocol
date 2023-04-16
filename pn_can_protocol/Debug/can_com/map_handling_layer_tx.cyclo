@@ -1,8 +1,0 @@
-map_handling_layer_tx.c:18:13:debug	2
-map_handling_layer_tx.c:23:13:dataTransmitted	11
-map_handling_layer_tx.c:81:6:can_com_init_tx	4
-map_handling_layer_tx.c:107:6:can_com_addLink_tx	9
-map_handling_layer_tx.c:152:6:can_com_addMessage_tx	12
-map_handling_layer_tx.c:213:6:can_com_receive_tx	8
-map_handling_layer_tx.c:251:6:can_com_timeoutMonitor_tx	8
-map_handling_layer_tx.c:290:6:can_com_errorHandler_tx	5
