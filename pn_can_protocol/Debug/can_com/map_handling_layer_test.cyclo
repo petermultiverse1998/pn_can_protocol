@@ -1,5 +1,0 @@
-map_handling_layer_test.c:16:13:can_receive	1
-map_handling_layer_test.c:26:16:can_send	1
-map_handling_layer_test.c:30:17:getTimeInMillis	1
-map_handling_layer_test.c:35:13:dataReceivedCallback	2
-map_handling_layer_test.c:45:6:map_handling_layer_test	2

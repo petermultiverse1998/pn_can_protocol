@@ -1,8 +1,0 @@
-../can_com/map_handling_layer_rx.c:17:13:debug	32	static
-../can_com/map_handling_layer_rx.c:22:13:dataReceivedCallback	24	static
-../can_com/map_handling_layer_rx.c:27:13:dataReceived	24	static
-../can_com/map_handling_layer_rx.c:40:6:can_com_init_rx	24	static
-../can_com/map_handling_layer_rx.c:65:6:can_com_addLink_rx	24	static
-../can_com/map_handling_layer_rx.c:94:6:can_com_receive_rx	56	static
-../can_com/map_handling_layer_rx.c:140:6:can_com_timeoutMonitor_rx	72	dynamic
-../can_com/map_handling_layer_rx.c:181:6:can_com_getBytes_rx	40	static

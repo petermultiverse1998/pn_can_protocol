@@ -1,3 +1,0 @@
-base_layer_can_test.c:8:9:canSend	2
-base_layer_can_test.c:17:6:canReceive	2
-base_layer_can_test.c:24:6:base_layer_can_test	3

@@ -1,9 +1,0 @@
-../can_com/map.c:16:6:map_create	16	static
-../can_com/map.c:34:6:map_getKeys	24	static
-../can_com/map.c:51:10:map_get	32	static
-../can_com/map.c:67:10:map_getKey	32	static
-../can_com/map.c:86:6:map_put	32	static
-../can_com/map.c:121:6:map_remove	32	static
-../can_com/map.c:159:6:map_delete	40	static
-../can_com/map.c:184:6:map_print	24	static
-../can_com/map.c:199:5:map_getLeakedBytes	16	static
