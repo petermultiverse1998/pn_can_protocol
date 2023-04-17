@@ -46,15 +46,15 @@ static uint32_t timeInMillis() {
 }
 
 static uint32_t getCRCValue(uint8_t *buffer, uint32_t len) {
-	HAL_CRC_Init(&hcrc); //Reset
+	/* CRC Reset */
+	HAL_CRC_DeInit(&hcrc);
+	HAL_CRC_Init(&hcrc);
 
 	uint32_t new_size = len / 4;
 	uint32_t crc = HAL_CRC_Accumulate(&hcrc, (uint32_t*) buffer, new_size);
 	uint32_t remaining = len % 4;
-	if (remaining == 0) { //Multiple of 4
-		HAL_CRC_Init(&hcrc);
+	if (remaining == 0) //Multiple of 4
 		return crc;
-	}
 
 	//Not multiple of 4
 	uint8_t rem_data[4];
@@ -404,7 +404,7 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 					link->end_ack_ID, data->id);
 		} else {
 			/* Can sending failed */
-			data->track = SYNC_LAYER_CAN_RECEIVE_SUCCESS;
+			data->track = data->crc == crc_from_sender?SYNC_LAYER_CAN_RECEIVE_SUCCESS:SYNC_LAYER_CAN_RECEIVE_FAILED;
 			console(CONSOLE_INFO, __func__,
 					"Data end ack 0x%0x of data 0x%0x send successful\n",
 					link->end_ack_ID, data->id);
