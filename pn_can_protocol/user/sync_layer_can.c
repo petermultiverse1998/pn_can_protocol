@@ -303,7 +303,7 @@ void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
 				data->track = SYNC_LAYER_CAN_TRANSMIT_SUCCESS;
 			} else {
 				console(CONSOLE_WARNING, __func__, "Data CRC match failed\n");
-				data->track = SYNC_LAYER_CAN_TRANSMIT_SUCCESS;
+				data->track = SYNC_LAYER_CAN_TRANSMIT_FAILED;
 			}
 		}
 	}
@@ -398,12 +398,12 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
 			*(uint8_t*) ((uint32_t*) bytes + 1) = 0x00;
 		/* END ACK */
 		if (!canSend(link->end_ack_ID, bytes, 8)) {
-			/* Can sending success */
+			/* Can sending failed */
 			console(CONSOLE_ERROR, __func__,
 					"Data received ack 0x%0x of data 0x%0x send failed\n",
 					link->end_ack_ID, data->id);
 		} else {
-			/* Can sending failed */
+			/* Can sending success */
 			data->track = data->crc == crc_from_sender?SYNC_LAYER_CAN_RECEIVE_SUCCESS:SYNC_LAYER_CAN_RECEIVE_FAILED;
 			console(CONSOLE_INFO, __func__,
 					"Data end ack 0x%0x of data 0x%0x send successful\n",
