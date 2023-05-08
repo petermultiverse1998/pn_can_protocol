@@ -81,9 +81,7 @@ static uint8_t txCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t statu
 	for (int i = 0; i < size; i++)
 		printf("%d ", bytes[i]);
 	printf("\n");
-	if(id<0x20)
-		pn_can_protocol_addTxMessagePtr(&link, id+1, bytes, size);
-	return 1;
+	return 0;
 }
 
 static uint8_t rxCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
@@ -106,7 +104,7 @@ void init() {
 	canInit();
 	console("\n\nSOURCE INIT", "SUCCESS");
 
-	pn_can_protocol_addLink(&link, canSend, txCallback, rxCallback);
+	pn_can_protocol_addLink(&link, canSend, txCallback, rxCallback,1);
 
 	pn_can_protocol_addTxMessagePtr(&link, 0xA, tx_bytes, sizeof(tx_bytes));
 //	pn_can_protocol_addRxMessagePtr(&link, 0xA, rx_bytes, sizeof(rx_bytes));
@@ -115,6 +113,17 @@ void init() {
 }
 
 void loop() {
+	static uint32_t tick = -1;
+	if(tick==-1)
+		tick = HAL_GetTick();
+	if((HAL_GetTick()-tick)>3000){
+		if(pn_can_protocol_pop(&link))
+			printf("OK done\n");
+		else
+			printf("Not done\n");
+
+	}
+
 	pn_can_protocol_sendThread(&link);
 //	HAL_Delay(1000);
 }
