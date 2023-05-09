@@ -8,6 +8,7 @@
 #include "user.h"
 #include "pn_can_protocol.h"
 
+extern CRC_HandleTypeDef hcrc;
 
 static SyncLayerCanLink link = { 1, 2, 3, 4, 5, 6, 7 };
 
@@ -46,10 +47,10 @@ static CAN_RxHeaderTypeDef rx_header;
 static uint8_t data[8];
 void canRxInterrupt() {
 	HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rx_header, data);
-//	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
-//	for (int i = 0; i < rx_header.DLC; ++i)
-//		printf("%d ", data[i]);
-//	printf("\n");
+	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
+	for (int i = 0; i < rx_header.DLC; ++i)
+		printf("%d ", data[i]);
+	printf("\n");
 	pn_can_protocol_recThread(&link, rx_header.ExtId, data, rx_header.DLC);
 }
 
@@ -62,10 +63,10 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 	tx_header.RTR = CAN_RTR_DATA;
 	tx_header.TransmitGlobalTime = DISABLE;
 
-//	printf("canSend-> 0x%02x : ", (unsigned int) id);
-//	for (int i = 0; i < len; ++i)
-//		printf("%d ", bytes[i]);
-//	printf("\n");
+	printf("canSend-> 0x%02x : ", (unsigned int) id);
+	for (int i = 0; i < len; ++i)
+		printf("%d ", bytes[i]);
+	printf("\n");
 
 	return HAL_CAN_AddTxMessage(&hcan, &tx_header, bytes, &tx_mailbox) == HAL_OK;
 }
@@ -78,8 +79,8 @@ static uint8_t txCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t statu
 		return 1;
 	}
 	printf("0x%0x -> ",(int)id);
-	for (int i = 0; i < size; i++)
-		printf("%d ", bytes[i]);
+//	for (int i = 0; i < size; i++)
+//		printf("%d ", bytes[i]);
 	printf("\n");
 	return 0;
 }
@@ -99,6 +100,21 @@ static uint8_t rxCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t statu
 }
 
 uint8_t tx_bytes[] = {1,2,3,4,[9]=10};
+typedef struct{
+	char name[10];
+	char id[60];
+	char body[60];
+	char jpt[40];
+}Credential;
+
+
+Credential credential = {
+		"Niru",
+		"CAvxhgavdzxbjsdcisckjbdjxz",
+		"bxashvdjhbcsjjscdnjskcnkscnscnd",
+		"zvxgdwhsvbcjhxbscdjxhcdxs"
+};
+
 uint8_t rx_bytes[10];
 void init() {
 	canInit();
@@ -106,22 +122,26 @@ void init() {
 
 	pn_can_protocol_addLink(&link, canSend, txCallback, rxCallback,1);
 
-	pn_can_protocol_addTxMessagePtr(&link, 0xA, tx_bytes, sizeof(tx_bytes));
+	pn_can_protocol_addTxMessagePtr(&link, 0xA, (uint8_t*)&credential, sizeof(Credential));
+//	pn_can_protocol_addTxMessagePtr(&link, 0xA, (uint8_t*)&credential, sizeof(Credential));
+
 //	pn_can_protocol_addRxMessagePtr(&link, 0xA, rx_bytes, sizeof(rx_bytes));
 
 	HAL_Delay(3000);
 }
 
+
+uint8_t done = 0;
 void loop() {
 	static uint32_t tick = -1;
 	if(tick==-1)
 		tick = HAL_GetTick();
-	if((HAL_GetTick()-tick)>3000){
+	if((HAL_GetTick()-tick)>3000 && !done){
 		if(pn_can_protocol_pop(&link))
 			printf("OK done\n");
 		else
 			printf("Not done\n");
-
+		done = 1;
 	}
 
 	pn_can_protocol_sendThread(&link);

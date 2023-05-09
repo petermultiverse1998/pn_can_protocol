@@ -235,6 +235,10 @@ uint8_t pn_can_protocol_addTxMessage(SyncLayerCanLink *link, uint32_t id,
 	sync_data->dynamically_alocated = 1;
 
 	if (is_in_que[link_index]) {
+		if (que_isExist(tx_que[link_index], sync_data)) {
+			console(CONSOLE_INFO, __func__, "Sync Data already in que\n");
+			return 1;
+		}
 		if (que_push(tx_que[link_index], sync_data) == NULL) {
 			console(CONSOLE_ERROR, __func__,
 					"Heap is full. Sync data can't be put in que\n");
@@ -288,6 +292,11 @@ uint8_t pn_can_protocol_addTxMessagePtr(SyncLayerCanLink *link, uint32_t id,
 	sync_data->dynamically_alocated = 0;
 
 	if (is_in_que[link_index]) {
+		if (que_isExist(tx_que[link_index], sync_data)) {
+			console(CONSOLE_INFO, __func__, "Sync Data already in que\n");
+			return 1;
+		}
+
 		if (que_push(tx_que[link_index], sync_data) == NULL) {
 			console(CONSOLE_ERROR, __func__,
 					"Heap is full. Sync data can't be put in que\n");
