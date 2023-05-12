@@ -14,8 +14,9 @@
 uint8_t pn_can_protocol_addLink(SyncLayerCanLink *link,
 		uint8_t (*canSendFunc)(uint32_t id, uint8_t *bytes, uint8_t len),
 		uint8_t (*txCallbackFunc)(uint32_t id,uint8_t*bytes,uint16_t size,uint8_t status),
-		uint8_t (*rxCallbackFunc)(uint32_t id,uint8_t*bytes,uint16_t size,uint8_t status));
+		uint8_t (*rxCallbackFunc)(uint32_t id,uint8_t*bytes,uint16_t size,uint8_t status),uint8_t is_que);
 uint8_t pn_can_protocol_addTxMessage(SyncLayerCanLink *link, uint32_t id, uint8_t *data, uint16_t size);
+uint8_t pn_can_protocol_pop(SyncLayerCanLink *link);
 uint8_t pn_can_protocol_addTxMessagePtr(SyncLayerCanLink *link, uint32_t id, uint8_t *data, uint16_t size);
 uint8_t pn_can_protocol_addRxMessagePtr(SyncLayerCanLink *link, uint32_t id, uint8_t *data, uint16_t size);
 void pn_can_protocol_sendThread(SyncLayerCanLink* link);

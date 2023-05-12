@@ -6,15 +6,15 @@
  */
 
 #include "sync_layer_can.h"
-#include "crc.h"
 #include "stdarg.h"
 #include "main.h"
+#include "crc.h"
+
 
 #define SYNC_LAYER_CAN_TRANSMIT_TIMEOUT 10000
 #define SYNC_LAYER_CAN_RECEIVE_TIMEOUT 10000
 
 #define SYNC_LAYER_CAN_TX_SEND_RETRY 3
-
 
 /******************CONSOLE*****************************/
 typedef enum {

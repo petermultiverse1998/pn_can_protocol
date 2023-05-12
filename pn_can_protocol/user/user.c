@@ -142,12 +142,12 @@ void init() {
 
 uint8_t done = 0;
 void loop() {
-//	static uint32_t tick = 0;
-//	if((HAL_GetTick()-tick)>3000 && !done){
-//		pn_can_protocol_addTxMessagePtr(&link1, 0xA, tx_bytes, sizeof(tx_bytes));
-//		pn_can_protocol_addTxMessagePtr(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
-//		tick = HAL_GetTick();
-//	}
+	static uint32_t tick = 0;
+	if((HAL_GetTick()-tick)>3000 && !done){
+		pn_can_protocol_addTxMessagePtr(&link1, 0xA, tx_bytes, sizeof(tx_bytes));
+		pn_can_protocol_addTxMessagePtr(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
+		tick = HAL_GetTick();
+	}
 
 	pn_can_protocol_sendThread(&link1);
 	pn_can_protocol_sendThread(&link2);
