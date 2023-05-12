@@ -6,6 +6,7 @@
  */
 
 #include "sync_layer_can.h"
+#include "crc.h"
 #include "stdarg.h"
 #include "main.h"
 
@@ -14,7 +15,6 @@
 
 #define SYNC_LAYER_CAN_TX_SEND_RETRY 3
 
-extern CRC_HandleTypeDef hcrc;
 
 /******************CONSOLE*****************************/
 typedef enum {
@@ -46,23 +46,7 @@ static uint32_t timeInMillis() {
 }
 
 static uint32_t getCRCValue(uint8_t *buffer, uint32_t len) {
-	/* CRC Reset */
-	HAL_CRC_DeInit(&hcrc);
-	HAL_CRC_Init(&hcrc);
-
-	uint32_t new_size = len / 4;
-	uint32_t crc = HAL_CRC_Accumulate(&hcrc, (uint32_t*) buffer, new_size);
-	uint32_t remaining = len % 4;
-	if (remaining == 0) //Multiple of 4
-		return crc;
-
-	//Not multiple of 4
-	uint8_t rem_data[4];
-	for (uint32_t i = 0; i < remaining; i++)
-		rem_data[i] = buffer[i];
-	for (uint32_t i = remaining; i < 4; i++)
-		rem_data[i] = 0;
-	return HAL_CRC_Accumulate(&hcrc, (uint32_t*) rem_data, 1);
+	return crc32_calculate(buffer, len);
 }
 
 /******************TRANSMIT***************************/

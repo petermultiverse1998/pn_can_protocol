@@ -8,8 +8,11 @@
 #include "user.h"
 #include "pn_can_protocol.h"
 
+extern CRC_HandleTypeDef hcrc;
 
-static SyncLayerCanLink link = { 1, 2, 3, 4, 5, 6, 7 };
+static SyncLayerCanLink link1 = { 1, 2, 3, 4, 5, 6, 7 };
+static SyncLayerCanLink link2 = { 11, 22, 23, 44, 55, 66, 77 };
+//static SyncLayerCanLink link = { 11, 22, 23, 44, 55, 66, 77 };
 
 /********************CONSOLE***************************/
 static void console(const char *title, const char *msg) {
@@ -46,11 +49,12 @@ static CAN_RxHeaderTypeDef rx_header;
 static uint8_t data[8];
 void canRxInterrupt() {
 	HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rx_header, data);
-//	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
-//	for (int i = 0; i < rx_header.DLC; ++i)
-//		printf("%d ", data[i]);
-//	printf("\n");
-	pn_can_protocol_recThread(&link, rx_header.ExtId, data, rx_header.DLC);
+	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
+	for (int i = 0; i < rx_header.DLC; ++i)
+		printf("%d ", data[i]);
+	printf("\n");
+	pn_can_protocol_recThread(&link1, rx_header.ExtId, data, rx_header.DLC);
+	pn_can_protocol_recThread(&link2, rx_header.ExtId, data, rx_header.DLC);
 }
 
 static CAN_TxHeaderTypeDef tx_header;
@@ -62,37 +66,60 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 	tx_header.RTR = CAN_RTR_DATA;
 	tx_header.TransmitGlobalTime = DISABLE;
 
-//	printf("canSend-> 0x%02x : ", (unsigned int) id);
-//	for (int i = 0; i < len; ++i)
-//		printf("%d ", bytes[i]);
-//	printf("\n");
+	printf("canSend-> 0x%02x : ", (unsigned int) id);
+	for (int i = 0; i < len; ++i)
+		printf("%d ", bytes[i]);
+	printf("\n");
 
 	return HAL_CAN_AddTxMessage(&hcan, &tx_header, bytes, &tx_mailbox) == HAL_OK;
 }
 
 /**********************MAIN THREAD****************************/
-static uint8_t txCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
-	printf("Tx Data : ");
+static uint8_t txCallback1(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Tx1 Data : ");
 	if(!status){
 		printf("failed\n");
 		return 1;
 	}
-	printf("0x%0x -> ",id);
+	printf("0x%0x -> ",(int)id);
 	for (int i = 0; i < size; i++)
 		printf("%d ", bytes[i]);
 	printf("\n");
-	if(id>=0x20 && id<0x30)
-		pn_can_protocol_addTxMessagePtr(&link, id+1, bytes,size);
 	return 1;
 }
-
-static uint8_t rxCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
-	printf("Rx Data : ");
+static uint8_t txCallback2(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Tx2 Data : ");
 	if(!status){
 		printf("failed\n");
 		return 1;
 	}
-	printf("0x%0x -> ",id);
+	printf("0x%0x -> ",(int)id);
+	for (int i = 0; i < size; i++)
+		printf("%d ", bytes[i]);
+	printf("\n");
+	return 1;
+}
+
+static uint8_t rxCallback1(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Rx1 Data : ");
+	if(!status){
+		printf("failed\n");
+		return 1;
+	}
+	printf("0x%0x -> ",(int)id);
+	for (int i = 0; i < size; i++)
+		printf("%d ", bytes[i]);
+	printf("\n");
+
+	return 1;
+}
+static uint8_t rxCallback2(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Rx2 Data : ");
+	if(!status){
+		printf("failed\n");
+		return 1;
+	}
+	printf("0x%0x -> ",(int)id);
 	for (int i = 0; i < size; i++)
 		printf("%d ", bytes[i]);
 	printf("\n");
@@ -106,15 +133,23 @@ void init() {
 	canInit();
 	console("\n\nSOURCE INIT", "SUCCESS");
 
-	pn_can_protocol_addLink(&link, canSend, txCallback, rxCallback);
-
-	pn_can_protocol_addTxMessagePtr(&link, 0x4FF, tx_bytes, sizeof(tx_bytes));
-//	pn_can_protocol_addRxMessagePtr(&link, 0xA, rx_bytes, sizeof(rx_bytes));
+	pn_can_protocol_addLink(&link1, canSend, txCallback1, rxCallback1,1);
+	pn_can_protocol_addLink(&link2, canSend, txCallback2, rxCallback2,0);
 
 	HAL_Delay(3000);
 }
 
+
+uint8_t done = 0;
 void loop() {
-	pn_can_protocol_sendThread(&link);
+//	static uint32_t tick = 0;
+//	if((HAL_GetTick()-tick)>3000 && !done){
+//		pn_can_protocol_addTxMessagePtr(&link1, 0xA, tx_bytes, sizeof(tx_bytes));
+//		pn_can_protocol_addTxMessagePtr(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
+//		tick = HAL_GetTick();
+//	}
+
+	pn_can_protocol_sendThread(&link1);
+	pn_can_protocol_sendThread(&link2);
 //	HAL_Delay(1000);
 }
