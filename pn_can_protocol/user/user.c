@@ -10,7 +10,9 @@
 
 extern CRC_HandleTypeDef hcrc;
 
-static SyncLayerCanLink link = { 1, 2, 3, 4, 5, 6, 7 };
+static SyncLayerCanLink link1 = { 1, 2, 3, 4, 5, 6, 7 };
+static SyncLayerCanLink link2 = { 11, 22, 23, 44, 55, 66, 77 };
+//static SyncLayerCanLink link = { 11, 22, 23, 44, 55, 66, 77 };
 
 /********************CONSOLE***************************/
 static void console(const char *title, const char *msg) {
@@ -51,7 +53,8 @@ void canRxInterrupt() {
 	for (int i = 0; i < rx_header.DLC; ++i)
 		printf("%d ", data[i]);
 	printf("\n");
-	pn_can_protocol_recThread(&link, rx_header.ExtId, data, rx_header.DLC);
+	pn_can_protocol_recThread(&link1, rx_header.ExtId, data, rx_header.DLC);
+	pn_can_protocol_recThread(&link2, rx_header.ExtId, data, rx_header.DLC);
 }
 
 static CAN_TxHeaderTypeDef tx_header;
@@ -72,21 +75,46 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 }
 
 /**********************MAIN THREAD****************************/
-static uint8_t txCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
-	printf("Tx Data : ");
+static uint8_t txCallback1(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Tx1 Data : ");
 	if(!status){
 		printf("failed\n");
 		return 1;
 	}
 	printf("0x%0x -> ",(int)id);
-//	for (int i = 0; i < size; i++)
-//		printf("%d ", bytes[i]);
+	for (int i = 0; i < size; i++)
+		printf("%d ", bytes[i]);
 	printf("\n");
-	return 0;
+	return 1;
+}
+static uint8_t txCallback2(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Tx2 Data : ");
+	if(!status){
+		printf("failed\n");
+		return 1;
+	}
+	printf("0x%0x -> ",(int)id);
+	for (int i = 0; i < size; i++)
+		printf("%d ", bytes[i]);
+	printf("\n");
+	return 1;
 }
 
-static uint8_t rxCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
-	printf("Rx Data : ");
+static uint8_t rxCallback1(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Rx1 Data : ");
+	if(!status){
+		printf("failed\n");
+		return 1;
+	}
+	printf("0x%0x -> ",(int)id);
+	for (int i = 0; i < size; i++)
+		printf("%d ", bytes[i]);
+	printf("\n");
+
+	return 1;
+}
+static uint8_t rxCallback2(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t status) {
+	printf("Rx2 Data : ");
 	if(!status){
 		printf("failed\n");
 		return 1;
@@ -100,32 +128,13 @@ static uint8_t rxCallback(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t statu
 }
 
 uint8_t tx_bytes[] = {1,2,3,4,[9]=10};
-typedef struct{
-	char name[10];
-	char id[60];
-	char body[60];
-	char jpt[40];
-}Credential;
-
-
-Credential credential = {
-		"Niru",
-		"CAvxhgavdzxbjsdcisckjbdjxz",
-		"bxashvdjhbcsjjscdnjskcnkscnscnd",
-		"zvxgdwhsvbcjhxbscdjxhcdxs"
-};
-
 uint8_t rx_bytes[10];
 void init() {
 	canInit();
 	console("\n\nSOURCE INIT", "SUCCESS");
 
-	pn_can_protocol_addLink(&link, canSend, txCallback, rxCallback,1);
-
-	pn_can_protocol_addTxMessagePtr(&link, 0xA, (uint8_t*)&credential, sizeof(Credential));
-//	pn_can_protocol_addTxMessagePtr(&link, 0xA, (uint8_t*)&credential, sizeof(Credential));
-
-//	pn_can_protocol_addRxMessagePtr(&link, 0xA, rx_bytes, sizeof(rx_bytes));
+	pn_can_protocol_addLink(&link1, canSend, txCallback1, rxCallback1,1);
+	pn_can_protocol_addLink(&link2, canSend, txCallback2, rxCallback2,0);
 
 	HAL_Delay(3000);
 }
@@ -133,17 +142,14 @@ void init() {
 
 uint8_t done = 0;
 void loop() {
-	static uint32_t tick = -1;
-	if(tick==-1)
-		tick = HAL_GetTick();
+	static uint32_t tick = 0;
 	if((HAL_GetTick()-tick)>3000 && !done){
-		if(pn_can_protocol_pop(&link))
-			printf("OK done\n");
-		else
-			printf("Not done\n");
-		done = 1;
+		pn_can_protocol_addTxMessagePtr(&link1, 0xA, tx_bytes, sizeof(tx_bytes));
+		pn_can_protocol_addTxMessagePtr(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
+		tick = HAL_GetTick();
 	}
 
-	pn_can_protocol_sendThread(&link);
+	pn_can_protocol_sendThread(&link1);
+	pn_can_protocol_sendThread(&link2);
 //	HAL_Delay(1000);
 }
