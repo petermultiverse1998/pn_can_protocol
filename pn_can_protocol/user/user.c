@@ -10,9 +10,8 @@
 
 extern CRC_HandleTypeDef hcrc;
 
-static SyncLayerCanLink link1 = { 1, 2, 3, 4, 5, 6, 7 };
-static SyncLayerCanLink link2 = { 11, 22, 23, 44, 55, 66, 77 };
-//static SyncLayerCanLink link = { 11, 22, 23, 44, 55, 66, 77 };
+static SyncLayerCanLink link1 = { 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7 };
+static SyncLayerCanLink link2 = { 0x11, 0x22, 0x23, 0x44, 0x55, 0x66, 0x77 };
 
 /********************CONSOLE***************************/
 static void console(const char *title, const char *msg) {
@@ -49,10 +48,10 @@ static CAN_RxHeaderTypeDef rx_header;
 static uint8_t data[8];
 void canRxInterrupt() {
 	HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rx_header, data);
-	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
-	for (int i = 0; i < rx_header.DLC; ++i)
-		printf("%d ", data[i]);
-	printf("\n");
+//	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
+//	for (int i = 0; i < rx_header.DLC; ++i)
+//		printf("%d ", data[i]);
+//	printf("\n");
 	pn_can_protocol_recThread(&link1, rx_header.ExtId, data, rx_header.DLC);
 	pn_can_protocol_recThread(&link2, rx_header.ExtId, data, rx_header.DLC);
 }
@@ -66,10 +65,10 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 	tx_header.RTR = CAN_RTR_DATA;
 	tx_header.TransmitGlobalTime = DISABLE;
 
-	printf("canSend-> 0x%02x : ", (unsigned int) id);
-	for (int i = 0; i < len; ++i)
-		printf("%d ", bytes[i]);
-	printf("\n");
+//	printf("canSend-> 0x%02x : ", (unsigned int) id);
+//	for (int i = 0; i < len; ++i)
+//		printf("%d ", bytes[i]);
+//	printf("\n");
 
 	return HAL_CAN_AddTxMessage(&hcan, &tx_header, bytes, &tx_mailbox) == HAL_OK;
 }
@@ -143,10 +142,11 @@ void init() {
 uint8_t done = 0;
 void loop() {
 	static uint32_t tick = 0;
-	if((HAL_GetTick()-tick)>3000 && !done){
-		pn_can_protocol_addTxMessagePtr(&link1, 0xA, tx_bytes, sizeof(tx_bytes));
-		pn_can_protocol_addTxMessagePtr(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
+	if((HAL_GetTick()-tick)>1000 && !done){
+		pn_can_protocol_addTxMessage(&link1, 0xA, tx_bytes, sizeof(tx_bytes));
+		pn_can_protocol_addTxMessage(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
 		tick = HAL_GetTick();
+//		done = 1;
 	}
 
 	pn_can_protocol_sendThread(&link1);

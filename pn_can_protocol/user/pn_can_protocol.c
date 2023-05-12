@@ -364,6 +364,8 @@ uint8_t pn_can_protocol_addRxMessagePtr(SyncLayerCanLink *link, uint32_t id,
  * @param link	: Link where data is to be transmitted or received
  */
 void pn_can_protocol_sendThread(SyncLayerCanLink *link) {
+	uint32_t interrupt_enabled = !__get_PRIMASK();
+	__disable_irq();
 	SyncLayerCanData *data;
 	int link_index = getLinkIndex(link);
 
@@ -371,12 +373,13 @@ void pn_can_protocol_sendThread(SyncLayerCanLink *link) {
 		/* Transmitting */
 		data = (SyncLayerCanData*) que_get(tx_que[link_index]);
 		if (data == NULL) {
-			console(CONSOLE_WARNING, __func__, "Data is NULL\n");
-			return;
+			console(CONSOLE_INFO, __func__, "Data is NULL\n");
+		} else {
+			console(CONSOLE_INFO, __func__, "Data of 0x%0x is found\n",
+					data->id);
+			sync_layer_can_txSendThread(link, data, canSend[link_index],
+					txCallbackFunc);
 		}
-		console(CONSOLE_INFO, __func__, "Data of 0x%0x is found\n", data->id);
-		sync_layer_can_txSendThread(link, data, canSend[link_index],
-				txCallbackFunc);
 	} else {
 		/* Transmitting */
 		int tx_keys_size = tx_map[link_index]->size;
@@ -385,8 +388,8 @@ void pn_can_protocol_sendThread(SyncLayerCanLink *link) {
 		for (int j = 0; j < tx_keys_size; j++) {
 			data = (SyncLayerCanData*) map_get(tx_map[link_index], tx_keys[j]);
 			if (data == NULL) {
-				console(CONSOLE_WARNING, __func__,
-						"Tx Key 0x%0x is not found\n", tx_keys[j]);
+				console(CONSOLE_INFO, __func__, "Tx Key 0x%0x is not found\n",
+						tx_keys[j]);
 				continue;
 			}
 			console(CONSOLE_INFO, __func__, "Tx Key 0x%0x is found\n",
@@ -401,8 +404,7 @@ void pn_can_protocol_sendThread(SyncLayerCanLink *link) {
 	uint32_t rx_keys[rx_keys_size];
 	map_getKeys(rx_map[link_index], rx_keys);
 	for (int j = 0; j < rx_keys_size; j++) {
-		data = (SyncLayerCanData*) map_get(rx_map[link_index],
-				rx_keys[link_index]);
+		data = (SyncLayerCanData*) map_get(rx_map[link_index], rx_keys[j]);
 		if (data == NULL) {
 			console(CONSOLE_WARNING, __func__, "Rx Key 0x%0x is not found\n",
 					rx_keys[j]);
@@ -412,6 +414,9 @@ void pn_can_protocol_sendThread(SyncLayerCanLink *link) {
 		sync_layer_can_rxSendThread(link, data, canSend[link_index],
 				rxCallbackFunc);
 	}
+
+	if(interrupt_enabled)
+		__enable_irq();
 }
 
 /*

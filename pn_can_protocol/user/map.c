@@ -92,6 +92,8 @@ Map *map_put(Map *map, MapKey key, MapValue value) {
             return NULL;
         map->leaked_bytes += size;
         map_leak_track += size;
+    }else{
+    	return map;
     }
 
     content->key = key;
