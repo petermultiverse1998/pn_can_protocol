@@ -10,8 +10,8 @@
 
 extern CRC_HandleTypeDef hcrc;
 
-static SyncLayerCanLink link1 = { 1, 2, 3, 4, 5, 6, 7 };
-static SyncLayerCanLink link2 = { 11, 22, 23, 44, 55, 66, 77 };
+static SyncLayerCanLink link1 = { 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7 };
+static SyncLayerCanLink link2 = { 0x11, 0x22, 0x23, 0x44, 0x55, 0x66, 0x77 };
 //static SyncLayerCanLink link = { 11, 22, 23, 44, 55, 66, 77 };
 
 /********************CONSOLE***************************/
@@ -49,12 +49,12 @@ static CAN_RxHeaderTypeDef rx_header;
 static uint8_t data[8];
 void canRxInterrupt() {
 	HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rx_header, data);
-	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
-	for (int i = 0; i < rx_header.DLC; ++i)
-		printf("%d ", data[i]);
-	printf("\n");
+//	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
+//	for (int i = 0; i < rx_header.DLC; ++i)
+//		printf("%d ", data[i]);
+//	printf("\n");
 	pn_can_protocol_recThread(&link1, rx_header.ExtId, data, rx_header.DLC);
-	pn_can_protocol_recThread(&link2, rx_header.ExtId, data, rx_header.DLC);
+//	pn_can_protocol_recThread(&link2, rx_header.ExtId, data, rx_header.DLC);
 }
 
 static CAN_TxHeaderTypeDef tx_header;
@@ -66,10 +66,10 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 	tx_header.RTR = CAN_RTR_DATA;
 	tx_header.TransmitGlobalTime = DISABLE;
 
-	printf("canSend-> 0x%02x : ", (unsigned int) id);
-	for (int i = 0; i < len; ++i)
-		printf("%d ", bytes[i]);
-	printf("\n");
+//	printf("canSend-> 0x%02x : ", (unsigned int) id);
+//	for (int i = 0; i < len; ++i)
+//		printf("%d ", bytes[i]);
+//	printf("\n");
 
 	return HAL_CAN_AddTxMessage(&hcan, &tx_header, bytes, &tx_mailbox) == HAL_OK;
 }
@@ -127,29 +127,32 @@ static uint8_t rxCallback2(uint32_t id,uint8_t* bytes,uint16_t size,uint8_t stat
 	return 1;
 }
 
-uint8_t tx_bytes[] = {1,2,3,4,[9]=10};
+uint8_t tx_bytes[] = {1,2,3,4,[15]=10};
 uint8_t rx_bytes[10];
 void init() {
 	canInit();
 	console("\n\nSOURCE INIT", "SUCCESS");
 
-	pn_can_protocol_addLink(&link1, canSend, txCallback1, rxCallback1,1);
-	pn_can_protocol_addLink(&link2, canSend, txCallback2, rxCallback2,0);
+	pn_can_protocol_addLink(&link1, canSend, txCallback1, rxCallback1,0);
+//	pn_can_protocol_addLink(&link2, canSend, txCallback2, rxCallback2,0);
 
 	HAL_Delay(3000);
 }
 
 
-uint8_t done = 0;
+//uint8_t done = 0;
 void loop() {
 	static uint32_t tick = 0;
-	if((HAL_GetTick()-tick)>3000 && !done){
+	if((HAL_GetTick()-tick)>3000){
 		pn_can_protocol_addTxMessagePtr(&link1, 0xA, tx_bytes, sizeof(tx_bytes));
-		pn_can_protocol_addTxMessagePtr(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
+		pn_can_protocol_addTxMessagePtr(&link1, 0xB, tx_bytes, sizeof(tx_bytes));
+//		pn_can_protocol_addTxMessagePtr(&link1, 0xC, tx_bytes, sizeof(tx_bytes));
+//		pn_can_protocol_addTxMessagePtr(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
 		tick = HAL_GetTick();
 	}
 
+
 	pn_can_protocol_sendThread(&link1);
-	pn_can_protocol_sendThread(&link2);
+//	pn_can_protocol_sendThread(&link2);
 //	HAL_Delay(1000);
 }
