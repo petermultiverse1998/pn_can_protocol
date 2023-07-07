@@ -22,7 +22,7 @@ typedef enum {
 } ConsoleStatus;
 static void console(ConsoleStatus status, const char *func_name,
 		const char *msg, ...) {
-	if (status == CONSOLE_INFO)
+	if (status == CONSOLE_INFO||status==CONSOLE_WARNING)
 		return;
 	//TODO make naked and show all registers
 	if (status == CONSOLE_ERROR) {
