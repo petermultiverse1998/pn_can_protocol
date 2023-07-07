@@ -107,8 +107,10 @@ struct SyncLayerCanControl{
 extern struct SyncLayerCanControl StaticSyncLayerCan;
 
 struct SyncLayerCanTest{
-	void (*canRxInterrupt)();
-	void (*run)();
+	void (*canRxInterruptRx)();
+	void (*canRxInterruptTx)();
+	void (*runRx)();
+	void (*runTx)();
 };
 extern struct SyncLayerCanTest StaticSyncLayerCanTest;
 

@@ -54,7 +54,7 @@ static void canInit() {
 
 static CAN_RxHeaderTypeDef rx_header;
 static uint8_t bytes[8];
-static void canRxInterrupt() {
+static void canRxInterruptRx() {
 	HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rx_header, bytes);
 //	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
 //	for (int i = 0; i < rx_header.DLC; ++i)
@@ -64,6 +64,21 @@ static void canRxInterrupt() {
 	uint32_t id = *(uint32_t*) bytes;
 	if (id == data1.id || data1.id == rx_header.ExtId) {
 		StaticSyncLayerCan.rxReceiveThread(&link1, &data1, rx_header.ExtId, bytes,
+				rx_header.DLC);
+	}
+
+}
+
+static void canRxInterruptTx() {
+	HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rx_header, bytes);
+//	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
+//	for (int i = 0; i < rx_header.DLC; ++i)
+//		printf("%d ", bytes[i]);
+//	printf("\n");
+
+	uint32_t id = *(uint32_t*) bytes;
+	if (id == data1.id || data1.id == rx_header.ExtId) {
+		StaticSyncLayerCan.txReceiveThread(&link1, &data1, rx_header.ExtId, bytes,
 				rx_header.DLC);
 	}
 
@@ -105,7 +120,7 @@ void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data, uint8_t status) 
 	data->track = SYNC_LAYER_CAN_START_REQUEST;
 }
 
-static void run() {
+static void runRx() {
 	canInit();
 
 	data1.id = 0xA;
@@ -137,5 +152,36 @@ static void run() {
 	}
 }
 
-struct SyncLayerCanTest StaticSyncLayerCanTest = { .canRxInterrupt =
-		canRxInterrupt, .run = run };
+static void runTx() {
+	canInit();
+
+	data1.id = 0xA;
+	data1.bytes = rx_bytes1;
+	data1.size = sizeof(rx_bytes1);
+	data1.track = SYNC_LAYER_CAN_START_REQUEST;
+	data1.data_retry = 0;
+	data1.dynamically_alocated = 0;
+
+	data2.id = 0xB;
+	data2.bytes = rx_bytes2;
+	data2.size = sizeof(rx_bytes2);
+	data2.track = SYNC_LAYER_CAN_START_REQUEST;
+	data2.data_retry = 0;
+	data2.dynamically_alocated = 0;
+
+	data3.id = 0xC;
+	data3.bytes = rx_bytes3;
+	data3.size = sizeof(rx_bytes3);
+	data3.track = SYNC_LAYER_CAN_START_REQUEST;
+	data3.data_retry = 0;
+	data3.dynamically_alocated = 0;
+
+	console("\n\nSOURCE INIT", "SUCCESS");
+
+	while (1) {
+		StaticSyncLayerCan.txSendThread(&link1, &data1, canSend, txCallback);
+	}
+}
+
+struct SyncLayerCanTest StaticSyncLayerCanTest = {
+		.canRxInterruptRx = canRxInterruptRx,.canRxInterruptTx = canRxInterruptTx, .runRx = runRx, .runTx = runTx};

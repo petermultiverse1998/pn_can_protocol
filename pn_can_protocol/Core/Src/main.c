@@ -104,7 +104,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 #include "pn_can_sync_layer.h"
 
-  StaticSyncLayerCanTest.run();
+  StaticSyncLayerCanTest.runRx();
   while (1)
   {
     /* USER CODE END WHILE */
