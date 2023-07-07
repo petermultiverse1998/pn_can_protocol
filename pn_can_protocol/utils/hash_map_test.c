@@ -244,7 +244,7 @@ static void demo(){
 
     //Get content from hash map using key
     double* valuePtr = StaticHashMap.get(map,keys[0]);
-    printf("%d -> %f\n",keys[0],*valuePtr);
+//    printf("%d -> %f\n",keys[0],*valuePtr);
 
     //Get all keys
     int mapKeys[map->size];
@@ -269,8 +269,8 @@ static void demo(){
 
 }
 
-int main() {
-    test();
-//    demo();
-    return 0;
-}
+//int main() {
+//    test();
+////    demo();
+//    return 0;
+//}

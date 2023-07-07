@@ -38,29 +38,29 @@ static int test16(){return POINTER_EQUALS(__FILE__, __LINE__,&pointer,&pointer);
 
 static int test17(){return BOOLEAN_IS_TRUE(__FILE__, __LINE__,1);}
 
-int main() {
-
-    Test test = StaticTest.new();
-
-    StaticTest.addTask(&test, test1);
-    StaticTest.addTask(&test, test2);
-    StaticTest.addTask(&test, test3);
-    StaticTest.addTask(&test, test4);
-    StaticTest.addTask(&test, test5);
-    StaticTest.addTask(&test, test6);
-    StaticTest.addTask(&test, test7);
-    StaticTest.addTask(&test, test8);
-    StaticTest.addTask(&test, test9);
-    StaticTest.addTask(&test, test10);
-    StaticTest.addTask(&test, test11);
-    StaticTest.addTask(&test, test12);
-    StaticTest.addTask(&test, test13);
-    StaticTest.addTask(&test, test14);
-    StaticTest.addTask(&test, test15);
-    StaticTest.addTask(&test, test16);
-    StaticTest.addTask(&test, test17);
-
-    StaticTest.run(&test);
-
-    return 0;
-}
+//int main() {
+//
+//    Test test = StaticTest.new();
+//
+//    StaticTest.addTask(&test, test1);
+//    StaticTest.addTask(&test, test2);
+//    StaticTest.addTask(&test, test3);
+//    StaticTest.addTask(&test, test4);
+//    StaticTest.addTask(&test, test5);
+//    StaticTest.addTask(&test, test6);
+//    StaticTest.addTask(&test, test7);
+//    StaticTest.addTask(&test, test8);
+//    StaticTest.addTask(&test, test9);
+//    StaticTest.addTask(&test, test10);
+//    StaticTest.addTask(&test, test11);
+//    StaticTest.addTask(&test, test12);
+//    StaticTest.addTask(&test, test13);
+//    StaticTest.addTask(&test, test14);
+//    StaticTest.addTask(&test, test15);
+//    StaticTest.addTask(&test, test16);
+//    StaticTest.addTask(&test, test17);
+//
+//    StaticTest.run(&test);
+//
+//    return 0;
+//}

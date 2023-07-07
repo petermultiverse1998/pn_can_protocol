@@ -131,7 +131,7 @@ static void test(){
 }
 
 static void print(QueueType value){
-    printf("%f ",*(double *)value);
+//    printf("%f ",*(double *)value);
 }
 
 static void demo(){
@@ -149,11 +149,11 @@ static void demo(){
     StaticQueue.print(queue);
     printf("\n\n");
 
-    printf("%f removed\n",*(double *)StaticQueue.dequeue(queue));
+//    printf("%f removed\n",*(double *)StaticQueue.dequeue(queue));
     StaticQueue.print(queue);
     printf("\n\n");
 
-    printf("%f is current front element\n",*(double *)StaticQueue.peek(queue));
+//    printf("%f is current front element\n",*(double *)StaticQueue.peek(queue));
     StaticQueue.print(queue);
     printf("\n\n");
 
@@ -161,11 +161,11 @@ static void demo(){
     StaticQueue.print(queue);
 }
 
-int main(){
-    test();
-//    demo();
-
-    return 0;
-}
+//int main(){
+//    test();
+////    demo();
+//
+//    return 0;
+//}
 
 

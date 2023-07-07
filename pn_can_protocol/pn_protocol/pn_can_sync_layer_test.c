@@ -1,17 +1,25 @@
 /*
- * user.c
+ * pn_can_sync_layer_test.c
  *
- *  Created on: Apr 6, 2023
- *      Author: peter
+ *  Created on: Jul 7, 2023
+ *      Author: NIRUJA
  */
 
-#include "user.h"
-#include "pn_can_protocol.h"
-#include "sync_layer_can.h"
+#include "pn_can_sync_layer.h"
+#include "main.h"
 
 extern CRC_HandleTypeDef hcrc;
 
 static SyncLayerCanLink link1 = { 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7 };
+
+SyncLayerCanData data1;
+SyncLayerCanData data2;
+SyncLayerCanData data3;
+
+uint8_t tx_bytes[] = { 1, 2, 3, 4, [9]=10 };
+uint8_t rx_bytes1[16];
+uint8_t rx_bytes2[16];
+uint8_t rx_bytes3[16];
 
 /********************CONSOLE***************************/
 static void console(const char *title, const char *msg) {
@@ -44,24 +52,27 @@ static void canInit() {
 		console("CAN Start", "Failed");
 }
 
-
-SyncLayerCanData data1;
-
 static CAN_RxHeaderTypeDef rx_header;
 static uint8_t bytes[8];
-void canRxInterrupt() {
+static void canRxInterrupt() {
 	HAL_CAN_GetRxMessage(&hcan, CAN_RX_FIFO0, &rx_header, bytes);
 //	printf("Interrupt-> 0x%02x : ", (unsigned int) rx_header.ExtId);
 //	for (int i = 0; i < rx_header.DLC; ++i)
 //		printf("%d ", bytes[i]);
 //	printf("\n");
-//	pn_can_protocol_recThread(&link1, rx_header.ExtId, data, rx_header.DLC);
-//	pn_can_protocol_recThread(&link2, rx_header.ExtId, data, rx_header.DLC);
+
+	uint32_t id = *(uint32_t*) bytes;
+	if (id == data1.id || data1.id == rx_header.ExtId) {
+		StaticSyncLayerCan.rxReceiveThread(&link1, &data1, rx_header.ExtId, bytes,
+				rx_header.DLC);
+	}
+
 }
 
 static CAN_TxHeaderTypeDef tx_header;
 static uint32_t tx_mailbox;
 static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
+
 	tx_header.DLC = len;
 	tx_header.ExtId = id;
 	tx_header.IDE = CAN_ID_EXT;
@@ -76,20 +87,55 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 	return HAL_CAN_AddTxMessage(&hcan, &tx_header, bytes, &tx_mailbox) == HAL_OK;
 }
 
-/**********************MAIN THREAD****************************/
-void init() {
-
-}
-
 void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data, uint8_t status) {
 
 }
 
 void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data, uint8_t status) {
+	if (!status) {
+//		printf("Data failed\n");
+		data->track = SYNC_LAYER_CAN_START_REQUEST;
+		return;
+	}
 
+	printf("ID : 0x%0x",(int) data->id);
+	for (int i = 0; i < 8; i++)
+		printf(" %d ", data->bytes[i]);
+	printf("status : %d\n", status);
+	data->track = SYNC_LAYER_CAN_START_REQUEST;
 }
 
-uint8_t done = 0;
-void loop() {
+static void run() {
+	canInit();
 
+	data1.id = 0xA;
+	data1.bytes = rx_bytes1;
+	data1.size = sizeof(rx_bytes1);
+	data1.track = SYNC_LAYER_CAN_START_REQUEST;
+	data1.data_retry = 0;
+	data1.dynamically_alocated = 0;
+
+	data2.id = 0xB;
+	data2.bytes = rx_bytes2;
+	data2.size = sizeof(rx_bytes2);
+	data2.track = SYNC_LAYER_CAN_START_REQUEST;
+	data2.data_retry = 0;
+	data2.dynamically_alocated = 0;
+
+	data3.id = 0xC;
+	data3.bytes = rx_bytes3;
+	data3.size = sizeof(rx_bytes3);
+	data3.track = SYNC_LAYER_CAN_START_REQUEST;
+	data3.data_retry = 0;
+	data3.dynamically_alocated = 0;
+
+	console("\n\nSOURCE INIT", "SUCCESS");
+
+	while (1) {
+		StaticSyncLayerCan.rxSendThread(&link1, &data1, canSend, rxCallback);
+
+	}
 }
+
+struct SyncLayerCanTest StaticSyncLayerCanTest = { .canRxInterrupt =
+		canRxInterrupt, .run = run };

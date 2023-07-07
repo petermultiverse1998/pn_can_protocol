@@ -1,14 +1,15 @@
 /*
- * sync_layer_can.c
+ * pn_can_sync_layer.c
  *
- *  Created on: Apr 6, 2023
- *      Author: peter
+ *  Created on: Jul 7, 2023
+ *      Author: NIRUJA
  */
 
-#include "sync_layer_can.h"
+#include "pn_can_sync_layer.h"
 #include "stdarg.h"
 #include "main.h"
 #include "crc.h"
+#include "test.h"
 
 
 #define SYNC_LAYER_CAN_TRANSMIT_TIMEOUT 5000
@@ -26,10 +27,13 @@ static void console(ConsoleStatus status, const char *func_name,
 		return;
 	//TODO make naked and show all registers
 	if (status == CONSOLE_ERROR) {
+		RED;
 		printf("sync_layer_can.c|%s> ERROR :", func_name);
 	} else if (status == CONSOLE_INFO) {
+		GREEN;
 		printf("sync_layer_can.c|%s> INFO : ", func_name);
 	} else if (status == CONSOLE_WARNING) {
+		YELLOW;
 		printf("sync_layer_can.c|%s> WARNING : ", func_name);
 	} else {
 		printf("sync_layer_can.c|%s: ", func_name);
@@ -38,6 +42,7 @@ static void console(ConsoleStatus status, const char *func_name,
 	va_start(args, msg);
 	vprintf(msg, args);
 	va_end(args);
+	RESET;
 }
 
 /*****************PRIVATE COMMON**********************/
@@ -57,7 +62,7 @@ static uint32_t getCRCValue(uint8_t *buffer, uint32_t len) {
  * @param txCallback: This is callback called if data transmitted successfully or failed to transmit data
  * @return			: 1 txCallback is called 0 for no callback called
  */
-uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
+static uint8_t txSendThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data,
 		uint8_t (*canSend)(uint32_t id, uint8_t *bytes, uint8_t len),
 		void (*txCallback)(SyncLayerCanLink *link, SyncLayerCanData *data,
@@ -189,7 +194,7 @@ uint8_t sync_layer_can_txSendThread(SyncLayerCanLink *link,
  * @param can_bytes		: Can bytes received
  * @param can_bytes_len	: Can bytes length
  */
-void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
+static void txReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len) {
 	uint32_t data_id;
@@ -302,7 +307,7 @@ void sync_layer_can_txReceiveThread(SyncLayerCanLink *link,
  * @param rxCallback: This is callback called if data received successfully or failed to receive data successfully
  * @return			: 1 rxCallback is called 0 for no callback called
  */
-uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
+static uint8_t rxSendThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data,
 		uint8_t (*canSend)(uint32_t id, uint8_t *bytes, uint8_t len),
 		void (*rxCallback)(SyncLayerCanLink *link, SyncLayerCanData *data,
@@ -420,7 +425,7 @@ uint8_t sync_layer_can_rxSendThread(SyncLayerCanLink *link,
  * @param can_bytes		: Can bytes received
  * @param can_bytes_len	: Can bytes length
  */
-void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
+static void rxReceiveThread(SyncLayerCanLink *link,
 		SyncLayerCanData *data, uint32_t can_id, uint8_t *can_bytes,
 		uint8_t can_bytes_len) {
 	uint32_t data_id;
@@ -496,3 +501,10 @@ void sync_layer_can_rxReceiveThread(SyncLayerCanLink *link,
 	}
 }
 
+
+struct SyncLayerCanControl StaticSyncLayerCan = {
+		.txSendThread = txSendThread,
+		.txReceiveThread = txReceiveThread,
+		.rxSendThread = rxSendThread,
+		.rxReceiveThread = rxReceiveThread
+};
