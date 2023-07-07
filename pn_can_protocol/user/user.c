@@ -12,7 +12,6 @@
 extern CRC_HandleTypeDef hcrc;
 
 static SyncLayerCanLink link1 = { 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7 };
-static SyncLayerCanLink link2 = { 0x11, 0x22, 0x23, 0x44, 0x55, 0x66, 0x77 };
 
 /********************CONSOLE***************************/
 static void console(const char *title, const char *msg) {
@@ -47,8 +46,6 @@ static void canInit() {
 
 
 SyncLayerCanData data1;
-SyncLayerCanData data2;
-SyncLayerCanData data3;
 
 static CAN_RxHeaderTypeDef rx_header;
 static uint8_t bytes[8];
@@ -60,16 +57,6 @@ void canRxInterrupt() {
 //	printf("\n");
 //	pn_can_protocol_recThread(&link1, rx_header.ExtId, data, rx_header.DLC);
 //	pn_can_protocol_recThread(&link2, rx_header.ExtId, data, rx_header.DLC);
-
-
-	uint32_t id = *(uint32_t*) bytes;
-	if(id==data1.id || data1.id==rx_header.ExtId){
-		sync_layer_can_rxReceiveThread(&link1,&data1, rx_header.ExtId, bytes,rx_header.DLC);
-	}else if(id==data2.id||data2.id==rx_header.ExtId){
-		sync_layer_can_rxReceiveThread(&link1,&data2, rx_header.ExtId, bytes,rx_header.DLC);
-	}else if(id==data3.id||data3.id==rx_header.ExtId){
-		sync_layer_can_rxReceiveThread(&link1,&data3, rx_header.ExtId, bytes,rx_header.DLC);
-	}
 }
 
 static CAN_TxHeaderTypeDef tx_header;
@@ -90,96 +77,8 @@ static uint8_t canSend(uint32_t id, uint8_t *bytes, uint8_t len) {
 }
 
 /**********************MAIN THREAD****************************/
-static uint8_t txCallback1(uint32_t id, uint8_t *bytes, uint16_t size,
-		uint8_t status) {
-	printf("Tx1 Data : ");
-	if (!status) {
-		printf("failed\n");
-		return 1;
-	}
-	printf("0x%0x -> ", (int) id);
-	for (int i = 0; i < size; i++)
-		printf("%d ", bytes[i]);
-	printf("\n");
-	return 1;
-}
-static uint8_t txCallback2(uint32_t id, uint8_t *bytes, uint16_t size,
-		uint8_t status) {
-	printf("Tx2 Data : ");
-	if (!status) {
-		printf("failed\n");
-		return 1;
-	}
-	printf("0x%0x -> ", (int) id);
-	for (int i = 0; i < size; i++)
-		printf("%d ", bytes[i]);
-	printf("\n");
-	return 1;
-}
-
-static uint8_t rxCallback1(uint32_t id, uint8_t *bytes, uint16_t size,
-		uint8_t status) {
-	printf("Rx1 Data : ");
-	if (!status) {
-		printf("failed\n");
-		return 1;
-	}
-	printf("0x%0x -> ", (int) id);
-	for (int i = 0; i < size; i++)
-		printf("%d ", bytes[i]);
-	printf("\n");
-
-	return 1;
-}
-static uint8_t rxCallback2(uint32_t id, uint8_t *bytes, uint16_t size,
-		uint8_t status) {
-	printf("Rx2 Data : ");
-	if (!status) {
-		printf("failed\n");
-		return 1;
-	}
-	printf("0x%0x -> ", (int) id);
-	for (int i = 0; i < size; i++)
-		printf("%d ", bytes[i]);
-	printf("\n");
-
-	return 1;
-}
-
-uint8_t tx_bytes[] = { 1, 2, 3, 4, [9]=10 };
-uint8_t rx_bytes1[16];
-uint8_t rx_bytes2[16];
-uint8_t rx_bytes3[16];
-
 void init() {
-	canInit();
-	console("\n\nSOURCE INIT", "SUCCESS");
 
-//	pn_can_protocol_addLink(&link1, canSend, txCallback1, rxCallback1,1);
-//	pn_can_protocol_addLink(&link2, canSend, txCallback2, rxCallback2,0);
-
-	HAL_Delay(3000);
-	data1.id = 0xA;
-	data1.bytes = rx_bytes1;
-	data1.size = sizeof(rx_bytes1);
-	data1.track = SYNC_LAYER_CAN_START_REQUEST;
-	data1.data_retry = 0;
-	data1.dynamically_alocated = 0;
-
-
-	data2.id = 0xB;
-	data2.bytes = rx_bytes2;
-	data2.size = sizeof(rx_bytes2);
-	data2.track = SYNC_LAYER_CAN_START_REQUEST;
-	data2.data_retry = 0;
-	data2.dynamically_alocated = 0;
-
-	data3.id = 0xC;
-	data3.bytes = rx_bytes3;
-	data3.size = sizeof(rx_bytes3);
-	data3.track = SYNC_LAYER_CAN_START_REQUEST;
-	data3.data_retry = 0;
-	data3.dynamically_alocated = 0;
 }
 
 void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data, uint8_t status) {
@@ -187,35 +86,10 @@ void txCallback(SyncLayerCanLink *link, SyncLayerCanData *data, uint8_t status) 
 }
 
 void rxCallback(SyncLayerCanLink *link, SyncLayerCanData *data, uint8_t status) {
-	if(!status){
-//		printf("Data failed\n");
-		data->track = SYNC_LAYER_CAN_START_REQUEST;
-		return;
-	}
 
-	printf("ID : 0x%0x",data->id);
-	for(int i=0;i<8;i++)
-		printf(" %d ",data->bytes[i]);
-	printf("status : %d\n",status);
-	data->track = SYNC_LAYER_CAN_START_REQUEST;
 }
 
 uint8_t done = 0;
 void loop() {
-	sync_layer_can_rxSendThread(&link1, &data1, canSend, rxCallback);
-	sync_layer_can_rxSendThread(&link1, &data2, canSend, rxCallback);
-	sync_layer_can_rxSendThread(&link1, &data3, canSend, rxCallback);
 
-
-//	static uint32_t tick = 0;
-//	if((HAL_GetTick()-tick)>1000 && !done){
-//		pn_can_protocol_addTxMessage(&link1, 0xA, tx_bytes, sizeof(tx_bytes));
-//		pn_can_protocol_addTxMessage(&link2, 0xB, tx_bytes, sizeof(tx_bytes));
-//		tick = HAL_GetTick();
-////		done = 1;
-//	}
-//
-//	pn_can_protocol_sendThread(&link1);
-//	pn_can_protocol_sendThread(&link2);
-//	HAL_Delay(1000);
 }
