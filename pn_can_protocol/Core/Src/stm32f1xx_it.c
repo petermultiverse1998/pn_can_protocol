@@ -190,7 +190,7 @@ void SysTick_Handler(void) {
 void USB_LP_CAN1_RX0_IRQHandler(void) {
 	/* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 0 */
 #include "pn_can_sync_layer.h"
-	StaticSyncLayerCanTest.canRxInterruptRx();
+	StaticSyncLayerCanTest.canRxInterruptTx();
 	/* USER CODE END USB_LP_CAN1_RX0_IRQn 0 */
 	HAL_CAN_IRQHandler(&hcan);
 	/* USER CODE BEGIN USB_LP_CAN1_RX0_IRQn 1 */
