@@ -18,8 +18,8 @@ SyncLayerCanData data2;
 SyncLayerCanData data3;
 
 uint8_t tx_bytes1[16] = { 1, 2, 3, 4, [9]=10 };
-uint8_t tx_bytes2[16] = { 1, 5, 3, 7 };
-uint8_t tx_bytes3[16] = { 2, 4, 6, 8 };
+uint8_t tx_bytes2[16] = { 1, 5, 3, 7};
+uint8_t tx_bytes3[16] = { 2, 4, 6, 8};
 
 uint8_t rx_bytes1[16];
 uint8_t rx_bytes2[16];
@@ -89,6 +89,12 @@ static void canRxInterruptTx() {
 	uint32_t id = *(uint32_t*) bytes;
 	if (id == data1.id || data1.id == rx_header.ExtId) {
 		StaticSyncLayerCan.txReceiveThread(&link1, &data1, rx_header.ExtId,
+				bytes, rx_header.DLC);
+	}else if (id == data2.id || data2.id == rx_header.ExtId) {
+		StaticSyncLayerCan.txReceiveThread(&link1, &data2, rx_header.ExtId,
+				bytes, rx_header.DLC);
+	}else if (id == data3.id || data3.id == rx_header.ExtId) {
+		StaticSyncLayerCan.txReceiveThread(&link2, &data3, rx_header.ExtId,
 				bytes, rx_header.DLC);
 	}
 
@@ -201,6 +207,8 @@ static void runTx() {
 
 	while (1) {
 		StaticSyncLayerCan.txSendThread(&link1, &data1, canSend, txCallback);
+		StaticSyncLayerCan.txSendThread(&link1, &data2, canSend, txCallback);
+		StaticSyncLayerCan.txSendThread(&link2, &data3, canSend, txCallback);
 	}
 }
 
