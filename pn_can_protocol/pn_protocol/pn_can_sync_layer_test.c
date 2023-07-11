@@ -13,17 +13,17 @@ extern CRC_HandleTypeDef hcrc;
 static SyncLayerCanLink link1 = { 0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7 };
 static SyncLayerCanLink link2 = { 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17 };
 
-SyncLayerCanData data1;
-SyncLayerCanData data2;
-SyncLayerCanData data3;
+static SyncLayerCanData data1;
+static SyncLayerCanData data2;
+static SyncLayerCanData data3;
 
-uint8_t tx_bytes1[16] = { 1, 2, 3, 4, [9]=10 };
-uint8_t tx_bytes2[16] = { 1, 5, 3, 7};
-uint8_t tx_bytes3[16] = { 2, 4, 6, 8};
+static uint8_t tx_bytes1[16] = { 1, 2, 3, 4, [9]=10 };
+static uint8_t tx_bytes2[16] = { 1, 5, 3, 7};
+static uint8_t tx_bytes3[16] = { 2, 4, 6, 8};
 
-uint8_t rx_bytes1[16];
-uint8_t rx_bytes2[16];
-uint8_t rx_bytes3[16];
+static uint8_t rx_bytes1[16];
+static uint8_t rx_bytes2[16];
+static uint8_t rx_bytes3[16];
 
 /********************CONSOLE***************************/
 static void console(const char *title, const char *msg) {

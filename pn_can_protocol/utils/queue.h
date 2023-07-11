@@ -63,6 +63,15 @@ struct QueueControl {
     int (*free)(Queue **queuePtr);
 
     /**
+     * Computation Cost : O(n)\n
+     * It checks if the value exists in the queue
+     * @param queue     : Queue
+     * @param value     : Value to be added in queue
+     * @return          : 1 if exists (OR) 0 else wise
+     */
+    int (*doesExist)(Queue *queue, QueueType value);
+
+    /**
      * This will print the contents of que
      * @param queue : Queue to be printed
      */
