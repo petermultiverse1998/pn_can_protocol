@@ -137,21 +137,21 @@ static uint8_t tx_bytes2[16] = { 1, 5, 3, 7 };
 static uint8_t tx_bytes3[16] = { 2, 4, 6, 8 };
 
 static void runRx() {
-	canInit();
-
 	StaticCanProtocol.addLink(&link1, canSend, txCallback1, rxCallback1, 1);
 	StaticCanProtocol.addLink(&link2, canSend, txCallback2, rxCallback2, 1);
+	canInit();
+
 	console("\n\nSOURCE INIT", "SUCCESS");
 
 	uint32_t tick = HAL_GetTick();
 	while (1) {
 		uint32_t tock = HAL_GetTick();
-		if ((tock - tick) >= 1000) {
-			StaticCanProtocol.addRxMessagePtr(&link1, 0xA, tx_bytes1,
+		if ((tock - tick) >= 100) {
+			StaticCanProtocol.addTxMessagePtr(&link1, 0xA, tx_bytes1,
 					sizeof(tx_bytes1));
-			StaticCanProtocol.addRxMessagePtr(&link1, 0xB, tx_bytes2,
+			StaticCanProtocol.addTxMessagePtr(&link1, 0xB, tx_bytes2,
 					sizeof(tx_bytes2));
-			StaticCanProtocol.addRxMessagePtr(&link2, 0xC, tx_bytes3,
+			StaticCanProtocol.addTxMessagePtr(&link2, 0xC, tx_bytes3,
 					sizeof(tx_bytes3));
 
 			tick = tock;
@@ -163,21 +163,22 @@ static void runRx() {
 }
 
 static void runTx() {
+	StaticCanProtocol.addLink(&link1, canSend, txCallback1, rxCallback1, 0);
+	StaticCanProtocol.addLink(&link2, canSend, txCallback2, rxCallback2, 0);
 	canInit();
 
-	StaticCanProtocol.addLink(&link1, canSend, txCallback1, rxCallback1, 1);
-	StaticCanProtocol.addLink(&link2, canSend, txCallback2, rxCallback2, 1);
 	console("\n\nSOURCE INIT", "SUCCESS");
+	HAL_Delay(3000);
 
 	uint32_t tick = HAL_GetTick();
 	while (1) {
 		uint32_t tock = HAL_GetTick();
-		if ((tock - tick) >= 1000) {
-			StaticCanProtocol.addRxMessagePtr(&link1, 0xA1, tx_bytes1,
+		if ((tock - tick) >= 100) {
+			StaticCanProtocol.addTxMessagePtr(&link1, 0xA1, tx_bytes1,
 					sizeof(tx_bytes1));
-			StaticCanProtocol.addRxMessagePtr(&link1, 0xB1, tx_bytes2,
+			StaticCanProtocol.addTxMessagePtr(&link1, 0xB1, tx_bytes2,
 					sizeof(tx_bytes2));
-			StaticCanProtocol.addRxMessagePtr(&link2, 0xC1, tx_bytes3,
+			StaticCanProtocol.addTxMessagePtr(&link2, 0xC1, tx_bytes3,
 					sizeof(tx_bytes3));
 			tick = tock;
 		}

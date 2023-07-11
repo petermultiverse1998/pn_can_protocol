@@ -28,15 +28,15 @@ static void console(ConsoleStatus status, const char *func_name,
 	//TODO make naked and show all registers
 	if (status == CONSOLE_ERROR) {
 		RED;
-		printf("sync_layer_can.c|%s> ERROR :", func_name);
+		printf("pn_can_sync_layer.c|%s> ERROR :", func_name);
 	} else if (status == CONSOLE_INFO) {
 		GREEN;
-		printf("sync_layer_can.c|%s> INFO : ", func_name);
+		printf("pn_can_sync_layer.c|%s> INFO : ", func_name);
 	} else if (status == CONSOLE_WARNING) {
 		YELLOW;
-		printf("sync_layer_can.c|%s> WARNING : ", func_name);
+		printf("pn_can_sync_layer.c|%s> WARNING : ", func_name);
 	} else {
-		printf("sync_layer_can.c|%s: ", func_name);
+		printf("pn_can_sync_layer.c|%s: ", func_name);
 	}
 	va_list args;
 	va_start(args, msg);

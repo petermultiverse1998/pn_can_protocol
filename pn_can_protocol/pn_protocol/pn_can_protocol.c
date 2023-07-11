@@ -47,15 +47,15 @@ static void console(ConsoleStatus status, const char *func_name,
 	//TODO make naked and show all registers
 	if (status == CONSOLE_ERROR) {
 		RED;
-		printf("sync_layer_can.c|%s> ERROR :", func_name);
+		printf("pn_can_protocol.c|%s> ERROR :", func_name);
 	} else if (status == CONSOLE_INFO) {
 		GREEN;
-		printf("sync_layer_can.c|%s> INFO : ", func_name);
+		printf("pn_can_protocol.c|%s> INFO : ", func_name);
 	} else if (status == CONSOLE_WARNING) {
 		YELLOW;
-		printf("sync_layer_can.c|%s> WARNING : ", func_name);
+		printf("pn_can_protocol.c|%s> WARNING : ", func_name);
 	} else {
-		printf("sync_layer_can.c|%s: ", func_name);
+		printf("pn_can_protocol.c|%s: ", func_name);
 	}
 	va_list args;
 	va_start(args, msg);
@@ -378,6 +378,7 @@ static void sendThread(SyncLayerCanLink *link) {
 	SyncLayerCanData *data;
 	int link_index = getLinkIndex(link);
 
+
 	if (is_in_que[link_index]) {
 		/* Transmitting */
 		data = (SyncLayerCanData*) StaticQueue.peek(tx_que[link_index]);
@@ -393,6 +394,7 @@ static void sendThread(SyncLayerCanLink *link) {
 		int tx_keys_size = tx_map[link_index]->size;
 		int tx_keys[tx_keys_size];
 		StaticHashMap.getKeys(tx_map[link_index], tx_keys);
+
 		for (int j = 0; j < tx_keys_size; j++) {
 			data = (SyncLayerCanData*) StaticHashMap.get(tx_map[link_index], tx_keys[j]);
 			if (data == NULL) {
@@ -413,7 +415,7 @@ static void sendThread(SyncLayerCanLink *link) {
 	StaticHashMap.getKeys(rx_map[link_index], rx_keys);
 	for (int j = 0; j < rx_keys_size; j++) {
 		data = (SyncLayerCanData*) StaticHashMap.get(rx_map[link_index],
-				rx_keys[link_index]);
+				rx_keys[j]);
 		if (data == NULL) {
 			console(CONSOLE_WARNING, __func__, "Rx Key 0x%0x is not found\n",
 					rx_keys[j]);
