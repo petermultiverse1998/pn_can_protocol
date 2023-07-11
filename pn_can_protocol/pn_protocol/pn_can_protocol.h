@@ -11,8 +11,6 @@
 #include "stdint.h"
 #include "pn_can_sync_layer.h"
 
-
-
 struct CanProtocolControl {
 	/**
 	 * This will add the link
@@ -82,6 +80,16 @@ struct CanProtocolControl {
 			uint8_t *bytes, uint16_t len);
 };
 
+
+
 extern struct CanProtocolControl StaticCanProtocol;
+
+
+struct CanProtocolTest{
+	void (*canRxInterrupt)();
+	void (*runRx)();
+	void (*runTx)();
+};
+extern struct CanProtocolTest StaticCanProtocolTest;
 
 #endif /* PN_CAN_PROTOCOL_H_ */
