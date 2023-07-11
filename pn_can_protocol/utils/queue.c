@@ -6,6 +6,8 @@
 
 #include <malloc.h>
 
+#define MAX_LOOP 1000
+
 static int allocatedMemory = 0;
 
 typedef struct QueueData QueueData;
@@ -189,6 +191,34 @@ static int freeQue(Queue **queuePtr) {
 }
 
 /**
+ * Computation Cost : O(n)\n
+ * It checks if the value exists in the queue
+ * @param queue     : Queue
+ * @param value     : Value to be added in queue
+ * @return          : 1 if exists (OR) 0 else wise
+ */
+static int doesExist(Queue *queue, QueueType value){
+    if(value==QUEUE_NULL)
+        return 0;
+    //If map is NULL then return NULL
+    if (queue == NULL)
+        return 0;
+
+    if (queue->size == 0) {
+        //If que is empty
+        return 0;
+    } else {
+        QueueData *data = queue->front;
+        for (int i = 0; i <queue->size; ++i) {
+            if(data->value==value)
+                return 1;
+            data=data->next;
+        }
+        return 0;
+    }
+}
+
+/**
  * This will print the contents of que
  * @param queue : Queue to be printed
  */
@@ -223,6 +253,7 @@ struct QueueControl StaticQueue = {
         .dequeue = dequeue,
         .peek = peek,
         .free=freeQue,
+        .doesExist=doesExist,
         .print=print,
         .getAllocatedMemories=getAllocatedMemories
 };

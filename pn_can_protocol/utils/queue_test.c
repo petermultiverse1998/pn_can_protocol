@@ -118,6 +118,26 @@ static int testFree() {
     return check;
 }
 
+static int testDoesExist() {
+    double values[] = {1.2, 3.4, 6.8, 7.9};
+
+    Queue *queue = StaticQueue.new(NULL);
+    StaticQueue.enqueue(queue,&values[0]);
+    StaticQueue.enqueue(queue,&values[1]);
+    StaticQueue.enqueue(queue,&values[2]);
+
+    int check = BOOLEAN_IS_TRUE(__FILE__,__LINE__,StaticQueue.doesExist(queue,&values[0]));
+    check = check && BOOLEAN_IS_TRUE(__FILE__,__LINE__,StaticQueue.doesExist(queue,&values[1]));
+    check = check && BOOLEAN_IS_TRUE(__FILE__,__LINE__,StaticQueue.doesExist(queue,&values[2]));
+    check = check && BOOLEAN_IS_TRUE(__FILE__,__LINE__,!StaticQueue.doesExist(queue,&values[3]));
+
+    printf("testDoesExist\n");
+    StaticQueue.free(&queue);
+    check = check && INT_EQUALS(__FILE__, __LINE__,0,StaticQueue.getAllocatedMemories());
+    return check;
+}
+
+
 static void test(){
     Test test = StaticTest.new();
 
@@ -126,12 +146,13 @@ static void test(){
     StaticTest.addTask(&test, testDequeue);
     StaticTest.addTask(&test, testPeek);
     StaticTest.addTask(&test, testFree);
+    StaticTest.addTask(&test, testDoesExist);
 
     StaticTest.run(&test);
 }
 
 static void print(QueueType value){
-//    printf("%f ",*(double *)value);
+    printf("%f ",*(double *)value);
 }
 
 static void demo(){
@@ -149,11 +170,11 @@ static void demo(){
     StaticQueue.print(queue);
     printf("\n\n");
 
-//    printf("%f removed\n",*(double *)StaticQueue.dequeue(queue));
+    printf("%f removed\n",*(double *)StaticQueue.dequeue(queue));
     StaticQueue.print(queue);
     printf("\n\n");
 
-//    printf("%f is current front element\n",*(double *)StaticQueue.peek(queue));
+    printf("%f is current front element\n",*(double *)StaticQueue.peek(queue));
     StaticQueue.print(queue);
     printf("\n\n");
 
