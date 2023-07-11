@@ -102,10 +102,11 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  init();
+#include "pn_can_protocol.h"
+
+  StaticCanProtocolTest.runTx();
   while (1)
   {
-	  loop();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
